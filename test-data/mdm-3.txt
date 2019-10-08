@@ -1,8 +1,0 @@
-MSH|^~\&|Epic|Epic|||20160510071633||MDM^T02|12345|D|2.3
-PID|1||68b1c58d-41cd-4855-a100-8206eb1b61b5^^^^EPI||Larkin917^Monroe732^J^^MR.^||19720817|M||AfrAm|377 Kuhic Station Unit 91^^Sturbridge^MA^01507^US^^^DN |DN|(608)123-9998|(608)123-5679||S||18273652|123-45-9999||||^^^WI^^
-PV1|||^^^CARE HEALTH SYSTEMS^^^^^||||||1173^MATTHEWS^JAMES^A^^^||||||||||||
-TXA||CN||20160510071633|1173^MATTHEWS^JAMES^A^^^|||||||^^12345|||||PA|
-OBX|1|TX|||Clinical summary: Based on the information provided, the patient likely has viral sinusitis commonly called a head cold.
-OBX|2|TX|||Diagnosis: Viral Sinusitis
-OBX|3|TX|||Diagnosis ICD: J01.90
-OBX|4|TX|||Prescription: benzonatate (Tessalon Perles) 100mg oral tablet 30 tablets, 5 days supply. Take one to two tablets by mouth three times a day as needed. disp. 30. Refills: 0, Refill as needed: no, Allow substitutions: yes
