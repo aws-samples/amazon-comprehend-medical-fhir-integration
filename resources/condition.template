@@ -1,0 +1,42 @@
+ {
+	"resourceType": "Condition",
+	"id": "$Id",
+	"meta": {
+		"profile": [
+			"http://standardhealthrecord.org/fhir/StructureDefinition/shr-condition-Condition"
+		]
+	},
+	"clinicalStatus": "active",
+	"verificationStatus": "confirmed",
+	"category": [
+		{
+			"coding": [
+				{
+					"system": "http://standardhealthrecord.org/shr/condition/vs/ConditionCategoryVS",
+					"code": "disease",
+					"display": "Disease"
+				}
+			]
+		}
+	],
+	"code": {
+		"coding": [
+			{
+				"system": "http://snomed.info/sct",
+				"code": "$code",
+				"display": "$display"
+			}
+		],
+		"text": "$text"
+	},
+	"subject": {
+		"reference": "urn:uuid:4369b419-927b-421d-8393-8bd795a2fb9b"
+	},
+	"context": {
+		"reference": "urn:uuid:08811fff-7625-415c-b7ba-14b8bb775b84"
+	},
+	"onsetDateTime": "$onsetDateTime",
+	"assertedDate": "1940-08-01T15:54:36-08:00"
+}
+
+

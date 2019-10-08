@@ -1,0 +1,359 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  FHIRAPIEndpoint:
+    Type: String
+    #Replae the FHIR API end point from lab
+    Default: "https://0ic0tntg82.execute-api.us-west-2.amazonaws.com/Prod/"
+  CognitoSecretName:
+    Type: String
+    Default: "MM-CMClientCognitoSecret"
+  FHIRTimeZone:
+    Type: String
+    #Replae the FHIR time zone
+    Default: "America/Los_Angeles"
+
+
+
+Resources:
+  # SQS queue to store object create notifications from S3
+  HealthInfoNotifyQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      VisibilityTimeout: 360
+      Tags:
+        -
+          Key: "QueueType"
+          Value: "HealthInfoQueue"
+
+  # SQS queue policy that grants S3 the ability to send messages into the queue
+  HealthInfoNotifyQueuePolicy:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      Queues:
+        - !Ref HealthInfoNotifyQueue
+      PolicyDocument:
+        Id: QueuePolicy
+        Version: "2012-10-17"
+        Statement:
+          - Sid: sendMessagesToQueue
+            Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action:
+             - sqs:SendMessage
+            Resource: "*"
+
+  # S3 bucket to store the actual source object payloads as objects. Sends objectCreated events
+  # to the SQS queue
+  # Note: Our code will assume a <bucket>/hl7/ and <bucket>/fhir/ source object structure
+  HealthInfoBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    DependsOn: HealthInfoNotifyQueuePolicy
+    Properties:
+      VersioningConfiguration:
+        Status: Enabled
+      NotificationConfiguration:
+          QueueConfigurations:
+            -
+              Queue: !GetAtt HealthInfoNotifyQueue.Arn
+              Filter:
+                S3Key:
+                  Rules:
+                    - Name: "prefix"
+                      Value: "input/hl7/"
+              Event: 's3:ObjectCreated:*'
+            -
+              Queue: !GetAtt HealthInfoNotifyQueue.Arn
+              Filter:
+                S3Key:
+                  Rules:
+                    - Name: "prefix"
+                      Value: "input/fhir/"
+              Event: 's3:ObjectCreated:*'
+
+  # Step Functions IAM role that allows the state machine to invoke other Lambda functions in the AWS account
+  HealthDataStatesExecutionRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - !Sub states.${AWS::Region}.amazonaws.com
+            Action: "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        - PolicyName: HealthDataStatesExecutionPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "lambda:InvokeFunction"
+                Resource: "*"
+
+  # Step Functions state machine that orchestrates the processing of our pipeline through
+  # various Lambda functions
+  HealthDataStateMachine:
+    Type: "AWS::StepFunctions::StateMachine"
+    Properties:
+      DefinitionString:
+        !Sub
+          - |-
+            {
+              "Comment": "State machine that orchestrates the processing of our pipeline through various Lambda functions",
+              "StartAt": "HealthDataRouter",
+              "States": {
+                "HealthDataRouter": {
+                  "Type": "Task",
+                  "Resource": "${HealthDataRouterLambdaArn}",
+                  "Next": "HealthDataTypeChoice"
+                },
+                "HealthDataTypeChoice": {
+                  "Type": "Choice",
+                  "Choices": [
+                    {
+                      "Variable": "$.DataType",
+                      "StringEquals": "hl7",
+                      "Next": "ExtractHL7"
+                    },
+                    {
+                      "Variable": "$.DataType",
+                      "StringEquals": "fhir",
+                      "Next": "ExtractFHIR"
+                    }
+                  ],
+                  "Default": "DataTypeFailure"
+                },
+                "ExtractHL7": {
+                  "Type": "Task",
+                  "Resource": "${HL7DataExtractFunction}",
+                  "Next": "SendToCM"
+                },
+                "ExtractFHIR": {
+                  "Type": "Task",
+                  "Resource": "${FHIRDataExtractFunction}",
+                  "Next": "SendToCM"
+                },
+                "SendToCM": {
+                  "Type": "Task",
+                  "Resource": "${SendToCMFunction}",
+                  "Next": "AssembleFHIR"
+                },
+                "AssembleFHIR": {
+                  "Type": "Task",
+                  "Resource": "${FHIRResourceBuilderFunction}",
+                  "End": true
+                },
+                "DataTypeFailure": {
+                  "Type": "Fail",
+                  "Cause": "S3 key did not match 'hl7' or 'fhir' structure, or output error."
+                }
+              }
+            }
+          - {HealthDataRouterLambdaArn: !GetAtt [ HealthDataRouterFunction, Arn ], HL7DataExtractFunction: !GetAtt [ HL7DataExtractFunction, Arn], SendToCMFunction: !GetAtt [ SendToCMFunction, Arn ], FHIRResourceBuilderFunction: !GetAtt [FHIRResourceBuilderFunction, Arn], FHIRDataExtractFunction: !GetAtt [ FHIRDataExtractFunction, Arn]}
+      RoleArn: !GetAtt HealthDataStatesExecutionRole.Arn
+
+  # Lambda function 'HealthDataEventHandler': receives 1 event at a time from SQS and
+  # begins the Step Functions state machine execution
+  HealthDataEventFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.HealthDataEventHandler::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      #AutoPublishAlias: !Ref LambdaAlias
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+      Policies:
+        Statement:
+          -  Effect: "Allow"
+             Action:
+               - "sqs:ReceiveMessage"
+               - "sqs:DeleteMessage"
+               - "sqs:DeleteMessage"
+               - "states:StartExecution"
+             Resource:
+               - !GetAtt HealthInfoNotifyQueue.Arn
+               - !Ref HealthDataStateMachine
+          -  Effect: "Allow"
+             Action:
+               - "s3:GetObject"
+               - "s3:PutObject"
+               - "s3:ListBucket"
+               - "s3:DeleteObject"
+             Resource:
+               - !Sub '${HealthInfoBucket.Arn}/*'
+          -  Effect: Allow
+             Action:
+               - logs:*
+             Resource:
+               - "*"
+      Events:
+        HealthDataSQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt HealthInfoNotifyQueue.Arn
+            BatchSize: 1
+      Environment:
+        Variables:
+          STATE_MACHINE_ARN: !Ref HealthDataStateMachine
+
+  # Lambda function 'HealthDataRouter': Evaluates the S3 key input and makes a determination as to
+  # whether or not this is a HL7 or FHIR source
+  HealthDataRouterFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.HealthDataRouter::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+
+  # Lambda function 'HL7DataHandler': Parses HL7 data and extracts the unstructured
+  # text that will eventually get processed by Comprehend Medical
+  HL7DataExtractFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.HL7DataHandler::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      #AutoPublishAlias: !Ref LambdaAlias
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+      Policies:
+        Statement:
+          -  Effect: "Allow"
+             Action:
+               - "s3:GetObject"
+               - "s3:PutObject"
+               - "s3:ListBucket"
+             Resource:
+               - !Sub '${HealthInfoBucket.Arn}/*'
+
+          -  Effect: Allow
+             Action:
+               - logs:*
+             Resource:
+               - "*"
+      Environment:
+        Variables:
+          FHIR_TIME_ZONE: !Ref FHIRTimeZone               
+  # Lambda function 'HL7DataHandler': Parses HL7 data and extracts the unstructured
+  # text that will eventually get processed by Comprehend Medical
+  FHIRDataExtractFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.FHIRDataHandler::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      #AutoPublishAlias: !Ref LambdaAlias
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+      Policies:
+        Statement:
+          -  Effect: "Allow"
+             Action:
+               - "s3:GetObject"
+               - "s3:PutObject"
+               - "s3:ListBucket"
+             Resource:
+               - !Sub '${HealthInfoBucket.Arn}/*'
+
+          -  Effect: Allow
+             Action:
+               - logs:*
+             Resource:
+               - "*"
+  # Lambda function 'SendToCm': sends unstructured notes data to Comprehend Medical
+  SendToCMFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.SendToCM::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+      Policies:
+        Statement:
+          -  Effect: "Allow"
+             Action:
+               - "s3:GetObject"
+               - "s3:PutObject"
+               - "s3:ListBucket"
+             Resource:
+               - !Sub '${HealthInfoBucket.Arn}/*'
+          -  Effect: Allow
+             Action:
+               - "comprehendmedical:DetectEntities"
+             Resource:
+               - "*"
+          -  Effect: Allow
+             Action:
+               - logs:*
+             Resource:
+               - "*"
+  # Lambda function 'FHIRResourceBuilder': builds FHIR resource based on CM output and original data
+  FHIRResourceBuilderFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.amazonaws.lab.FHIRResourceBuilder::handleRequest
+      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      Runtime: java8
+      MemorySize: 512
+      Timeout: 300
+      Tracing: Active
+      Policies:
+        Statement:
+          -  Effect: "Allow"
+             Action:
+               - "s3:GetObject"
+               - "s3:PutObject"
+               - "s3:ListBucket"
+               - "secretsmanager:GetSecretValue"
+             Resource:
+               - !Sub '${HealthInfoBucket.Arn}/*'
+               - !Ref 'CognitoSecretStore'
+          -  Effect: Allow
+             Action:
+               - cognito-sync:*
+               - cognito-identity:*
+
+             Resource:
+               - "*"
+          -  Effect: Allow
+             Action:
+               - logs:*
+             Resource:
+               - "*"
+      Environment:
+        Variables:
+          FHIR_API_ENDPOINT: !Ref FHIRAPIEndpoint
+          COGNITO_SECRET_NAME: !Ref CognitoSecretName
+          FHIR_TIME_ZONE: !Ref FHIRTimeZone
+  # For the demo, password hardcoded into the template (NOT RECOMMENDED)
+  CognitoSecretStore:
+    Type: 'AWS::SecretsManager::Secret'
+    Properties:
+      Name: !Ref 'CognitoSecretName'
+      Description: This secret has a hardcoded password in SecretString (use GenerateSecretString instead)
+      # Replace the user name , passsword and client id from the values in the lab
+      SecretString: '{"username":"cm-user","password":"Master123!","client-id":"5obgic32lccfpqeef66ai1s0v"}'
+      Tags:
+        -
+          Key: AppName
+          Value: CM-FHIR-Integration
+Outputs:
+  BucketName:
+    Value: !Ref 'HealthInfoBucket'
+    Description: Name of the Amazon S3 bucket containing our source objects with an events configuration to kick off our state machine.

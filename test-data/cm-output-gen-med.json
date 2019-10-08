@@ -1,0 +1,2210 @@
+{
+    "Entities": [
+        {
+            "Id": 0,
+            "BeginOffset": 33,
+            "EndOffset": 35,
+            "Score": 0.9999452829360962,
+            "Text": "59",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "AGE",
+            "Traits": []
+        },
+        {
+            "Id": 1,
+            "BeginOffset": 123,
+            "EndOffset": 131,
+            "Score": 0.9999983310699463,
+            "Text": "02/19/08",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "DATE",
+            "Traits": []
+        },
+        {
+            "Id": 3,
+            "BeginOffset": 212,
+            "EndOffset": 219,
+            "Score": 0.9969547986984253,
+            "Text": "chronic",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "ACUITY",
+            "Traits": []
+        },
+        {
+            "Id": 4,
+            "BeginOffset": 220,
+            "EndOffset": 228,
+            "Score": 0.9982427358627319,
+            "Text": "tinnitus",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.5370669960975647
+                }
+            ]
+        },
+        {
+            "Id": 16,
+            "BeginOffset": 236,
+            "EndOffset": 240,
+            "Score": 0.9966657757759094,
+            "Text": "left",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 17,
+            "BeginOffset": 241,
+            "EndOffset": 244,
+            "Score": 0.9957876801490784,
+            "Text": "ear",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 5,
+            "BeginOffset": 259,
+            "EndOffset": 271,
+            "Score": 0.9617241621017456,
+            "Text": "hearing loss",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SYMPTOM",
+                    "Score": 0.6525444984436035
+                }
+            ]
+        },
+        {
+            "Id": 6,
+            "BeginOffset": 272,
+            "EndOffset": 286,
+            "Score": 0.7779871821403503,
+            "Text": "for many years",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "ACUITY",
+            "Traits": []
+        },
+        {
+            "Id": 7,
+            "BeginOffset": 314,
+            "EndOffset": 326,
+            "Score": 0.8936007022857666,
+            "Text": "dyslipidemia",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.4089064300060272
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.4168703556060791
+                }
+            ]
+        },
+        {
+            "Id": 2,
+            "BeginOffset": 348,
+            "EndOffset": 354,
+            "Score": 0.9970095157623291,
+            "Text": "niacin",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 8,
+            "BeginOffset": 367,
+            "EndOffset": 378,
+            "Score": 0.9964463114738464,
+            "Text": "hemorrhoids",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.5564303994178772
+                }
+            ]
+        },
+        {
+            "Id": 9,
+            "BeginOffset": 384,
+            "EndOffset": 394,
+            "Score": 0.49522292613983154,
+            "Text": "occasional",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "ACUITY",
+            "Traits": []
+        },
+        {
+            "Id": 18,
+            "BeginOffset": 395,
+            "EndOffset": 403,
+            "Score": 0.5762299299240112,
+            "Text": "external",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 10,
+            "BeginOffset": 395,
+            "EndOffset": 412,
+            "Score": 0.6590974926948547,
+            "Text": "external bleeding",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SYMPTOM",
+                    "Score": 0.7911762595176697
+                }
+            ]
+        },
+        {
+            "Id": 11,
+            "BeginOffset": 442,
+            "EndOffset": 455,
+            "Score": 0.3760754466056824,
+            "Text": "last 6 months",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "ACUITY",
+            "Traits": []
+        },
+        {
+            "Id": 12,
+            "BeginOffset": 477,
+            "EndOffset": 491,
+            "Score": 0.9812107086181641,
+            "Text": "concha bullosa",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.6811054944992065
+                }
+            ]
+        },
+        {
+            "Id": 19,
+            "BeginOffset": 499,
+            "EndOffset": 503,
+            "Score": 0.9964131712913513,
+            "Text": "left",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 20,
+            "BeginOffset": 504,
+            "EndOffset": 511,
+            "Score": 0.9813119769096375,
+            "Text": "nostril",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 21,
+            "BeginOffset": 525,
+            "EndOffset": 528,
+            "Score": 0.6813609600067139,
+            "Text": "ENT",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 13,
+            "BeginOffset": 552,
+            "EndOffset": 568,
+            "Score": 0.9421523809432983,
+            "Text": "septal deviation",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.4207518398761749
+                },
+                {
+                    "Name": "SYMPTOM",
+                    "Score": 0.4765990674495697
+                }
+            ]
+        },
+        {
+            "Id": 14,
+            "BeginOffset": 753,
+            "EndOffset": 760,
+            "Score": 0.75682532787323,
+            "Text": "illness",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.8166307210922241
+                }
+            ]
+        },
+        {
+            "Id": 15,
+            "BeginOffset": 764,
+            "EndOffset": 770,
+            "Score": 0.9775610566139221,
+            "Text": "injury",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SYMPTOM",
+                    "Score": 0.6077971458435059
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.937650740146637
+                }
+            ]
+        },
+        {
+            "Id": 29,
+            "BeginOffset": 864,
+            "EndOffset": 868,
+            "Score": 0.9924362301826477,
+            "Text": "died",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9696090817451477
+                }
+            ]
+        },
+        {
+            "Id": 30,
+            "BeginOffset": 875,
+            "EndOffset": 877,
+            "Score": 0.993503987789154,
+            "Text": "MI",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9830065369606018
+                }
+            ]
+        },
+        {
+            "Id": 25,
+            "BeginOffset": 885,
+            "EndOffset": 887,
+            "Score": 0.999987006187439,
+            "Text": "67",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "AGE",
+            "Traits": []
+        },
+        {
+            "Id": 31,
+            "BeginOffset": 893,
+            "EndOffset": 897,
+            "Score": 0.9950520396232605,
+            "Text": "COPD",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9748944640159607
+                }
+            ]
+        },
+        {
+            "Id": 26,
+            "BeginOffset": 936,
+            "EndOffset": 938,
+            "Score": 0.9586959481239319,
+            "Text": "88",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "AGE",
+            "Traits": []
+        },
+        {
+            "Id": 36,
+            "BeginOffset": 969,
+            "EndOffset": 973,
+            "Score": 0.9658199548721313,
+            "Text": "lung",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 32,
+            "BeginOffset": 969,
+            "EndOffset": 980,
+            "Score": 0.3556925058364868,
+            "Text": "lung cancer",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9747092723846436
+                }
+            ]
+        },
+        {
+            "Id": 22,
+            "BeginOffset": 969,
+            "EndOffset": 990,
+            "Score": 0.795780599117279,
+            "Text": "lung cancer resection",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "PROCEDURE_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 33,
+            "BeginOffset": 1034,
+            "EndOffset": 1038,
+            "Score": 0.992895781993866,
+            "Text": "died",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9652965068817139
+                }
+            ]
+        },
+        {
+            "Id": 27,
+            "BeginOffset": 1046,
+            "EndOffset": 1048,
+            "Score": 0.7329232096672058,
+            "Text": "20",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "AGE",
+            "Traits": []
+        },
+        {
+            "Id": 34,
+            "BeginOffset": 1059,
+            "EndOffset": 1068,
+            "Score": 0.9939826130867004,
+            "Text": "pneumonia",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9713571071624756
+                }
+            ]
+        },
+        {
+            "Id": 23,
+            "BeginOffset": 1192,
+            "EndOffset": 1207,
+            "Score": 0.3573722243309021,
+            "Text": "weight training",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TREATMENT_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 28,
+            "BeginOffset": 1272,
+            "EndOffset": 1281,
+            "Score": 0.864492654800415,
+            "Text": "physician",
+            "Category": "PROTECTED_HEALTH_INFORMATION",
+            "Type": "PROFESSION",
+            "Traits": []
+        },
+        {
+            "Id": 37,
+            "BeginOffset": 1362,
+            "EndOffset": 1378,
+            "Score": 0.8874338865280151,
+            "Text": "gastrointestinal",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 38,
+            "BeginOffset": 1380,
+            "EndOffset": 1395,
+            "Score": 0.9388142824172974,
+            "Text": "cardiopulmonary",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 39,
+            "BeginOffset": 1397,
+            "EndOffset": 1410,
+            "Score": 0.9283243417739868,
+            "Text": "genitourinary",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 40,
+            "BeginOffset": 1414,
+            "EndOffset": 1429,
+            "Score": 0.5807244181632996,
+            "Text": "musculoskeletal",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 35,
+            "BeginOffset": 1414,
+            "EndOffset": 1444,
+            "Score": 0.6468702554702759,
+            "Text": "musculoskeletal symptomatology",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SYMPTOM",
+                    "Score": 0.8617974519729614
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.8663767576217651
+                }
+            ]
+        },
+        {
+            "Id": 24,
+            "BeginOffset": 1490,
+            "EndOffset": 1510,
+            "Score": 0.30136412382125854,
+            "Text": "PHYSICAL EXAMINATION",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 114,
+            "BeginOffset": 1512,
+            "EndOffset": 1519,
+            "Score": 0.9995736479759216,
+            "Text": "GENERAL",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 59,
+            "BeginOffset": 1532,
+            "EndOffset": 1537,
+            "Score": 0.9796053171157837,
+            "Text": "alert",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9150654077529907
+                }
+            ]
+        },
+        {
+            "Id": 60,
+            "BeginOffset": 1539,
+            "EndOffset": 1547,
+            "Score": 0.9962869882583618,
+            "Text": "oriented",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9451769590377808
+                }
+            ]
+        },
+        {
+            "Id": 61,
+            "BeginOffset": 1559,
+            "EndOffset": 1564,
+            "Score": 0.9881078600883484,
+            "Text": "acute",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "ACUITY",
+            "Traits": []
+        },
+        {
+            "Id": 62,
+            "BeginOffset": 1565,
+            "EndOffset": 1573,
+            "Score": 0.9876811504364014,
+            "Text": "distress",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9726756811141968
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9560832977294922
+                }
+            ]
+        },
+        {
+            "Id": 63,
+            "BeginOffset": 1579,
+            "EndOffset": 1607,
+            "Score": 0.5254648923873901,
+            "Text": "excellent cognitive function",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8997732996940613
+                }
+            ]
+        },
+        {
+            "Id": 41,
+            "BeginOffset": 1609,
+            "EndOffset": 1620,
+            "Score": 0.8874825239181519,
+            "Text": "VITAL SIGNS",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 42,
+            "BeginOffset": 1626,
+            "EndOffset": 1632,
+            "Score": 0.9960071444511414,
+            "Text": "height",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9921581745147705,
+                    "RelationshipScore": 0.9999984502792358,
+                    "Id": 43,
+                    "BeginOffset": 1636,
+                    "EndOffset": 1637,
+                    "Text": "6",
+                    "Traits": []
+                },
+                {
+                    "Type": "TEST_UNIT",
+                    "Score": 0.9489061832427979,
+                    "RelationshipScore": 0.999998927116394,
+                    "Id": 44,
+                    "BeginOffset": 1638,
+                    "EndOffset": 1642,
+                    "Text": "feet",
+                    "Traits": []
+                },
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9908415079116821,
+                    "RelationshipScore": 0.9999996423721313,
+                    "Id": 45,
+                    "BeginOffset": 1643,
+                    "EndOffset": 1644,
+                    "Text": "2",
+                    "Traits": []
+                },
+                {
+                    "Type": "TEST_UNIT",
+                    "Score": 0.997400164604187,
+                    "RelationshipScore": 0.9999985694885254,
+                    "Id": 46,
+                    "BeginOffset": 1645,
+                    "EndOffset": 1651,
+                    "Text": "inches",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 47,
+            "BeginOffset": 1653,
+            "EndOffset": 1659,
+            "Score": 0.9987629652023315,
+            "Text": "weight",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9999552965164185,
+                    "RelationshipScore": 0.9999920129776001,
+                    "Id": 48,
+                    "BeginOffset": 1663,
+                    "EndOffset": 1668,
+                    "Text": "181.2",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 49,
+            "BeginOffset": 1670,
+            "EndOffset": 1684,
+            "Score": 0.9988973140716553,
+            "Text": "blood pressure",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9976632595062256,
+                    "RelationshipScore": 0.9999998807907104,
+                    "Id": 50,
+                    "BeginOffset": 1688,
+                    "EndOffset": 1694,
+                    "Text": "126/80",
+                    "Traits": []
+                },
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9957660436630249,
+                    "RelationshipScore": 0.9614465832710266,
+                    "Id": 51,
+                    "BeginOffset": 1713,
+                    "EndOffset": 1719,
+                    "Text": "122/78",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 115,
+            "BeginOffset": 1702,
+            "EndOffset": 1707,
+            "Score": 0.924028217792511,
+            "Text": "right",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 116,
+            "BeginOffset": 1708,
+            "EndOffset": 1711,
+            "Score": 0.9337870478630066,
+            "Text": "arm",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 117,
+            "BeginOffset": 1727,
+            "EndOffset": 1731,
+            "Score": 0.9864751696586609,
+            "Text": "left",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 118,
+            "BeginOffset": 1732,
+            "EndOffset": 1735,
+            "Score": 0.9828270673751831,
+            "Text": "arm",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 52,
+            "BeginOffset": 1737,
+            "EndOffset": 1747,
+            "Score": 0.962323009967804,
+            "Text": "pulse rate",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9948227405548096,
+                    "RelationshipScore": 0.9999996423721313,
+                    "Id": 53,
+                    "BeginOffset": 1751,
+                    "EndOffset": 1753,
+                    "Text": "68",
+                    "Traits": []
+                },
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.4266171455383301,
+                    "RelationshipScore": 0.9999953508377075,
+                    "Id": 54,
+                    "BeginOffset": 1758,
+                    "EndOffset": 1765,
+                    "Text": "regular",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 55,
+            "BeginOffset": 1771,
+            "EndOffset": 1783,
+            "Score": 0.9233728647232056,
+            "Text": "respirations",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9968999624252319,
+                    "RelationshipScore": 0.9999943971633911,
+                    "Id": 56,
+                    "BeginOffset": 1788,
+                    "EndOffset": 1790,
+                    "Text": "16",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 119,
+            "BeginOffset": 1792,
+            "EndOffset": 1796,
+            "Score": 0.9967634677886963,
+            "Text": "SKIN",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 64,
+            "BeginOffset": 1798,
+            "EndOffset": 1802,
+            "Score": 0.9864845871925354,
+            "Text": "Warm",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9358473420143127
+                }
+            ]
+        },
+        {
+            "Id": 65,
+            "BeginOffset": 1807,
+            "EndOffset": 1810,
+            "Score": 0.9825053215026855,
+            "Text": "dry",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9587904214859009
+                }
+            ]
+        },
+        {
+            "Id": 66,
+            "BeginOffset": 1824,
+            "EndOffset": 1830,
+            "Score": 0.995421826839447,
+            "Text": "pallor",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9516756534576416
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9784159660339355
+                }
+            ]
+        },
+        {
+            "Id": 67,
+            "BeginOffset": 1832,
+            "EndOffset": 1840,
+            "Score": 0.9996182918548584,
+            "Text": "cyanosis",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9861286878585815
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9928876757621765
+                }
+            ]
+        },
+        {
+            "Id": 68,
+            "BeginOffset": 1844,
+            "EndOffset": 1851,
+            "Score": 0.996353268623352,
+            "Text": "icterus",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9729103446006775
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9881132245063782
+                }
+            ]
+        },
+        {
+            "Id": 120,
+            "BeginOffset": 1853,
+            "EndOffset": 1858,
+            "Score": 0.9957826137542725,
+            "Text": "HEENT",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 121,
+            "BeginOffset": 1860,
+            "EndOffset": 1878,
+            "Score": 0.9468459486961365,
+            "Text": "Tympanic membranes",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 69,
+            "BeginOffset": 1860,
+            "EndOffset": 1885,
+            "Score": 0.8963449001312256,
+            "Text": "Tympanic membranes benign",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9296392202377319
+                }
+            ]
+        },
+        {
+            "Id": 122,
+            "BeginOffset": 1891,
+            "EndOffset": 1898,
+            "Score": 0.994640588760376,
+            "Text": "pharynx",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 70,
+            "BeginOffset": 1891,
+            "EndOffset": 1908,
+            "Score": 0.36297112703323364,
+            "Text": "pharynx is benign",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9239894151687622
+                }
+            ]
+        },
+        {
+            "Id": 123,
+            "BeginOffset": 1910,
+            "EndOffset": 1922,
+            "Score": 0.981714129447937,
+            "Text": "Nasal mucosa",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 71,
+            "BeginOffset": 1910,
+            "EndOffset": 1932,
+            "Score": 0.746221125125885,
+            "Text": "Nasal mucosa is intact",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9548337459564209
+                }
+            ]
+        },
+        {
+            "Id": 124,
+            "BeginOffset": 1934,
+            "EndOffset": 1940,
+            "Score": 0.9942197799682617,
+            "Text": "Pupils",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 72,
+            "BeginOffset": 1945,
+            "EndOffset": 1950,
+            "Score": 0.9961495399475098,
+            "Text": "round",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9699456691741943
+                }
+            ]
+        },
+        {
+            "Id": 73,
+            "BeginOffset": 1952,
+            "EndOffset": 1959,
+            "Score": 0.8983652591705322,
+            "Text": "regular",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9116403460502625
+                }
+            ]
+        },
+        {
+            "Id": 74,
+            "BeginOffset": 1965,
+            "EndOffset": 1970,
+            "Score": 0.9904714822769165,
+            "Text": "equal",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9545493125915527
+                }
+            ]
+        },
+        {
+            "Id": 75,
+            "BeginOffset": 1972,
+            "EndOffset": 2015,
+            "Score": 0.6092622876167297,
+            "Text": "reacting equally to light and accommodation",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9330119490623474
+                }
+            ]
+        },
+        {
+            "Id": 76,
+            "BeginOffset": 2017,
+            "EndOffset": 2027,
+            "Score": 0.936707615852356,
+            "Text": "EOM intact",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9368575215339661
+                }
+            ]
+        },
+        {
+            "Id": 125,
+            "BeginOffset": 2029,
+            "EndOffset": 2034,
+            "Score": 0.8890398144721985,
+            "Text": "Fundi",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 77,
+            "BeginOffset": 2029,
+            "EndOffset": 2052,
+            "Score": 0.5118913054466248,
+            "Text": "Fundi reveal flat discs",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8579577207565308
+                }
+            ]
+        },
+        {
+            "Id": 78,
+            "BeginOffset": 2058,
+            "EndOffset": 2071,
+            "Score": 0.7473610639572144,
+            "Text": "clear margins",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.838066816329956
+                }
+            ]
+        },
+        {
+            "Id": 79,
+            "BeginOffset": 2073,
+            "EndOffset": 2091,
+            "Score": 0.8343860507011414,
+            "Text": "Normal vasculature",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8927095532417297
+                }
+            ]
+        },
+        {
+            "Id": 126,
+            "BeginOffset": 2080,
+            "EndOffset": 2091,
+            "Score": 0.38231518864631653,
+            "Text": "vasculature",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 80,
+            "BeginOffset": 2096,
+            "EndOffset": 2107,
+            "Score": 0.9978418350219727,
+            "Text": "hemorrhages",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9734304547309875
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9868374466896057
+                }
+            ]
+        },
+        {
+            "Id": 81,
+            "BeginOffset": 2109,
+            "EndOffset": 2117,
+            "Score": 0.9926595091819763,
+            "Text": "exudates",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9300220012664795
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9750850796699524
+                }
+            ]
+        },
+        {
+            "Id": 82,
+            "BeginOffset": 2121,
+            "EndOffset": 2135,
+            "Score": 0.9978646636009216,
+            "Text": "microaneurysms",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9514528512954712
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9918723702430725
+                }
+            ]
+        },
+        {
+            "Id": 127,
+            "BeginOffset": 2140,
+            "EndOffset": 2147,
+            "Score": 0.9805137515068054,
+            "Text": "thyroid",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 83,
+            "BeginOffset": 2140,
+            "EndOffset": 2159,
+            "Score": 0.9474964737892151,
+            "Text": "thyroid enlargement",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9600563049316406
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9734651446342468
+                }
+            ]
+        },
+        {
+            "Id": 84,
+            "BeginOffset": 2173,
+            "EndOffset": 2188,
+            "Score": 0.9990839958190918,
+            "Text": "lymphadenopathy",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9793755412101746
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.990009605884552
+                }
+            ]
+        },
+        {
+            "Id": 128,
+            "BeginOffset": 2190,
+            "EndOffset": 2195,
+            "Score": 0.9990111589431763,
+            "Text": "LUNGS",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 85,
+            "BeginOffset": 2197,
+            "EndOffset": 2233,
+            "Score": 0.9758647084236145,
+            "Text": "Clear to percussion and auscultation",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9254809021949768
+                }
+            ]
+        },
+        {
+            "Id": 86,
+            "BeginOffset": 2235,
+            "EndOffset": 2254,
+            "Score": 0.8738433718681335,
+            "Text": "Normal sinus rhythm",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9580344557762146
+                }
+            ]
+        },
+        {
+            "Id": 129,
+            "BeginOffset": 2242,
+            "EndOffset": 2247,
+            "Score": 0.7653120756149292,
+            "Text": "sinus",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 87,
+            "BeginOffset": 2259,
+            "EndOffset": 2273,
+            "Score": 0.8579773902893066,
+            "Text": "premature beat",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9380419254302979
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.958064615726471
+                }
+            ]
+        },
+        {
+            "Id": 88,
+            "BeginOffset": 2275,
+            "EndOffset": 2281,
+            "Score": 0.9979718327522278,
+            "Text": "murmur",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9691786170005798
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9893680214881897
+                }
+            ]
+        },
+        {
+            "Id": 89,
+            "BeginOffset": 2283,
+            "EndOffset": 2285,
+            "Score": 0.9827489852905273,
+            "Text": "S3",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9295464158058167
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9188219308853149
+                }
+            ]
+        },
+        {
+            "Id": 90,
+            "BeginOffset": 2289,
+            "EndOffset": 2291,
+            "Score": 0.9943954944610596,
+            "Text": "S4",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9758491516113281
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9789978861808777
+                }
+            ]
+        },
+        {
+            "Id": 130,
+            "BeginOffset": 2293,
+            "EndOffset": 2298,
+            "Score": 0.9669684767723083,
+            "Text": "Heart",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 91,
+            "BeginOffset": 2293,
+            "EndOffset": 2325,
+            "Score": 0.9350619316101074,
+            "Text": "Heart sounds are of good quality",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.80921471118927
+                }
+            ]
+        },
+        {
+            "Id": 131,
+            "BeginOffset": 2345,
+            "EndOffset": 2353,
+            "Score": 0.9313635230064392,
+            "Text": "carotids",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 92,
+            "BeginOffset": 2355,
+            "EndOffset": 2363,
+            "Score": 0.5227519869804382,
+            "Text": "femorals",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.42382147908210754
+                }
+            ]
+        },
+        {
+            "Id": 132,
+            "BeginOffset": 2355,
+            "EndOffset": 2363,
+            "Score": 0.541637122631073,
+            "Text": "femorals",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 93,
+            "BeginOffset": 2365,
+            "EndOffset": 2379,
+            "Score": 0.6738095879554749,
+            "Text": "dorsalis pedis",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8950016498565674
+                }
+            ]
+        },
+        {
+            "Id": 133,
+            "BeginOffset": 2365,
+            "EndOffset": 2379,
+            "Score": 0.959952712059021,
+            "Text": "dorsalis pedis",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 134,
+            "BeginOffset": 2385,
+            "EndOffset": 2394,
+            "Score": 0.9844247102737427,
+            "Text": "posterior",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 135,
+            "BeginOffset": 2395,
+            "EndOffset": 2412,
+            "Score": 0.20021508634090424,
+            "Text": "tibial pulsations",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 94,
+            "BeginOffset": 2395,
+            "EndOffset": 2422,
+            "Score": 0.48964112997055054,
+            "Text": "tibial pulsations are brisk",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8951829075813293
+                }
+            ]
+        },
+        {
+            "Id": 95,
+            "BeginOffset": 2424,
+            "EndOffset": 2429,
+            "Score": 0.9639200568199158,
+            "Text": "equal",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9291764497756958
+                }
+            ]
+        },
+        {
+            "Id": 96,
+            "BeginOffset": 2435,
+            "EndOffset": 2441,
+            "Score": 0.7901101112365723,
+            "Text": "active",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8307514190673828
+                }
+            ]
+        },
+        {
+            "Id": 136,
+            "BeginOffset": 2442,
+            "EndOffset": 2453,
+            "Score": 0.9955399632453918,
+            "Text": "bilaterally",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 137,
+            "BeginOffset": 2455,
+            "EndOffset": 2462,
+            "Score": 0.9987354874610901,
+            "Text": "ABDOMEN",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 97,
+            "BeginOffset": 2464,
+            "EndOffset": 2470,
+            "Score": 0.9594510197639465,
+            "Text": "Benign",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9275704622268677
+                }
+            ]
+        },
+        {
+            "Id": 98,
+            "BeginOffset": 2479,
+            "EndOffset": 2487,
+            "Score": 0.9993809461593628,
+            "Text": "guarding",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9752919673919678
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9847241640090942
+                }
+            ]
+        },
+        {
+            "Id": 99,
+            "BeginOffset": 2489,
+            "EndOffset": 2497,
+            "Score": 0.9990021586418152,
+            "Text": "rigidity",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9674214124679565
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9906300902366638
+                }
+            ]
+        },
+        {
+            "Id": 100,
+            "BeginOffset": 2499,
+            "EndOffset": 2509,
+            "Score": 0.9984991550445557,
+            "Text": "tenderness",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9525129199028015
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9791761636734009
+                }
+            ]
+        },
+        {
+            "Id": 101,
+            "BeginOffset": 2511,
+            "EndOffset": 2515,
+            "Score": 0.9938657879829407,
+            "Text": "mass",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.944820761680603
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9805108904838562
+                }
+            ]
+        },
+        {
+            "Id": 102,
+            "BeginOffset": 2519,
+            "EndOffset": 2531,
+            "Score": 0.9993199110031128,
+            "Text": "organomegaly",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9839510917663574
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9884546995162964
+                }
+            ]
+        },
+        {
+            "Id": 138,
+            "BeginOffset": 2533,
+            "EndOffset": 2543,
+            "Score": 0.996955156326294,
+            "Text": "NEUROLOGIC",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 103,
+            "BeginOffset": 2545,
+            "EndOffset": 2559,
+            "Score": 0.6751779317855835,
+            "Text": "Grossly intact",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9353805780410767
+                }
+            ]
+        },
+        {
+            "Id": 139,
+            "BeginOffset": 2561,
+            "EndOffset": 2572,
+            "Score": 0.9981009364128113,
+            "Text": "EXTREMITIES",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 104,
+            "BeginOffset": 2574,
+            "EndOffset": 2580,
+            "Score": 0.6304949522018433,
+            "Text": "Normal",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.6682751178741455
+                }
+            ]
+        },
+        {
+            "Id": 140,
+            "BeginOffset": 2582,
+            "EndOffset": 2584,
+            "Score": 0.9991053938865662,
+            "Text": "GU",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 141,
+            "BeginOffset": 2586,
+            "EndOffset": 2595,
+            "Score": 0.8582073450088501,
+            "Text": "Genitalia",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 105,
+            "BeginOffset": 2586,
+            "EndOffset": 2602,
+            "Score": 0.7872236371040344,
+            "Text": "Genitalia normal",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9263724088668823
+                }
+            ]
+        },
+        {
+            "Id": 106,
+            "BeginOffset": 2617,
+            "EndOffset": 2633,
+            "Score": 0.7797439694404602,
+            "Text": "inguinal hernias",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9733442664146423
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9880084991455078
+                }
+            ]
+        },
+        {
+            "Id": 107,
+            "BeginOffset": 2650,
+            "EndOffset": 2661,
+            "Score": 0.952381432056427,
+            "Text": "hemorrhoids",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.7809812426567078
+                }
+            ]
+        },
+        {
+            "Id": 142,
+            "BeginOffset": 2669,
+            "EndOffset": 2679,
+            "Score": 0.9968558549880981,
+            "Text": "anal canal",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 143,
+            "BeginOffset": 2685,
+            "EndOffset": 2693,
+            "Score": 0.9935246706008911,
+            "Text": "prostate",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 108,
+            "BeginOffset": 2685,
+            "EndOffset": 2702,
+            "Score": 0.49404391646385193,
+            "Text": "prostate is small",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9281408786773682
+                }
+            ]
+        },
+        {
+            "Id": 109,
+            "BeginOffset": 2711,
+            "EndOffset": 2736,
+            "Score": 0.44318628311157227,
+            "Text": "normal to mildly enlarged",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.8683149218559265
+                }
+            ]
+        },
+        {
+            "Id": 110,
+            "BeginOffset": 2760,
+            "EndOffset": 2771,
+            "Score": 0.5016339421272278,
+            "Text": "symmetrical",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.5069500803947449
+                }
+            ]
+        },
+        {
+            "Id": 111,
+            "BeginOffset": 2792,
+            "EndOffset": 2812,
+            "Score": 0.6331762075424194,
+            "Text": "palpable abnormality",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9114272594451904
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9497326612472534
+                }
+            ]
+        },
+        {
+            "Id": 112,
+            "BeginOffset": 2826,
+            "EndOffset": 2837,
+            "Score": 0.9419241547584534,
+            "Text": "rectal mass",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.9369197487831116
+                },
+                {
+                    "Name": "NEGATION",
+                    "Score": 0.9838850498199463
+                }
+            ]
+        },
+        {
+            "Id": 113,
+            "BeginOffset": 2843,
+            "EndOffset": 2870,
+            "Score": 0.6687548756599426,
+            "Text": "stool is Hemoccult negative",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "SIGN",
+                    "Score": 0.793028712272644
+                }
+            ]
+        },
+        {
+            "Id": 57,
+            "BeginOffset": 2852,
+            "EndOffset": 2861,
+            "Score": 0.5783808827400208,
+            "Text": "Hemoccult",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "TEST_VALUE",
+                    "Score": 0.9819834232330322,
+                    "RelationshipScore": 0.9999961853027344,
+                    "Id": 58,
+                    "BeginOffset": 2862,
+                    "EndOffset": 2870,
+                    "Text": "negative",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 167,
+            "BeginOffset": 2944,
+            "EndOffset": 2956,
+            "Score": 0.979941189289093,
+            "Text": "Dyslipidemia",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.9586518406867981
+                }
+            ]
+        },
+        {
+            "Id": 168,
+            "BeginOffset": 2961,
+            "EndOffset": 2969,
+            "Score": 0.9770296812057495,
+            "Text": "Tinnitus",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.8854053020477295
+                }
+            ]
+        },
+        {
+            "Id": 170,
+            "BeginOffset": 2971,
+            "EndOffset": 2975,
+            "Score": 0.9914402961730957,
+            "Text": "left",
+            "Category": "ANATOMY",
+            "Type": "DIRECTION",
+            "Traits": []
+        },
+        {
+            "Id": 171,
+            "BeginOffset": 2976,
+            "EndOffset": 2979,
+            "Score": 0.9713736772537231,
+            "Text": "ear",
+            "Category": "ANATOMY",
+            "Type": "SYSTEM_ORGAN_SITE",
+            "Traits": []
+        },
+        {
+            "Id": 169,
+            "BeginOffset": 2984,
+            "EndOffset": 2995,
+            "Score": 0.9761238098144531,
+            "Text": "Hemorrhoids",
+            "Category": "MEDICAL_CONDITION",
+            "Type": "DX_NAME",
+            "Traits": [
+                {
+                    "Name": "DIAGNOSIS",
+                    "Score": 0.8885601162910461
+                }
+            ]
+        },
+        {
+            "Id": 147,
+            "BeginOffset": 3027,
+            "EndOffset": 3033,
+            "Score": 0.9993439316749573,
+            "Text": "niacin",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.9463427066802979,
+                    "RelationshipScore": 0.9999959468841553,
+                    "Id": 148,
+                    "BeginOffset": 3034,
+                    "EndOffset": 3041,
+                    "Text": "1000 mg",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.9903593063354492,
+                    "RelationshipScore": 0.9996793270111084,
+                    "Id": 149,
+                    "BeginOffset": 3042,
+                    "EndOffset": 3056,
+                    "Text": "in the morning",
+                    "Traits": []
+                },
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.9903106689453125,
+                    "RelationshipScore": 0.9999340772628784,
+                    "Id": 150,
+                    "BeginOffset": 3058,
+                    "EndOffset": 3064,
+                    "Text": "500 mg",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.953179657459259,
+                    "RelationshipScore": 0.9999951124191284,
+                    "Id": 151,
+                    "BeginOffset": 3065,
+                    "EndOffset": 3072,
+                    "Text": "at noon",
+                    "Traits": []
+                },
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.9946238994598389,
+                    "RelationshipScore": 0.9999295473098755,
+                    "Id": 152,
+                    "BeginOffset": 3078,
+                    "EndOffset": 3085,
+                    "Text": "1000 mg",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.9931842684745789,
+                    "RelationshipScore": 0.9978333115577698,
+                    "Id": 153,
+                    "BeginOffset": 3086,
+                    "EndOffset": 3100,
+                    "Text": "in the evening",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 154,
+            "BeginOffset": 3102,
+            "EndOffset": 3109,
+            "Score": 0.9997796416282654,
+            "Text": "aspirin",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.9768487811088562,
+                    "RelationshipScore": 0.9993201494216919,
+                    "Id": 155,
+                    "BeginOffset": 3110,
+                    "EndOffset": 3115,
+                    "Text": "81 mg",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.9994348883628845,
+                    "RelationshipScore": 0.9985424280166626,
+                    "Id": 156,
+                    "BeginOffset": 3116,
+                    "EndOffset": 3121,
+                    "Text": "daily",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 157,
+            "BeginOffset": 3123,
+            "EndOffset": 3136,
+            "Score": 0.9958332180976868,
+            "Text": "multivitamins",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 158,
+            "BeginOffset": 3138,
+            "EndOffset": 3147,
+            "Score": 0.9999710321426392,
+            "Text": "vitamin E",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.993837296962738,
+                    "RelationshipScore": 0.9999873638153076,
+                    "Id": 159,
+                    "BeginOffset": 3148,
+                    "EndOffset": 3157,
+                    "Text": "400 units",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.9984979629516602,
+                    "RelationshipScore": 0.999992847442627,
+                    "Id": 160,
+                    "BeginOffset": 3158,
+                    "EndOffset": 3163,
+                    "Text": "daily",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 161,
+            "BeginOffset": 3169,
+            "EndOffset": 3178,
+            "Score": 0.9999583959579468,
+            "Text": "vitamin C",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": [],
+            "Attributes": [
+                {
+                    "Type": "DOSAGE",
+                    "Score": 0.99409419298172,
+                    "RelationshipScore": 0.999997615814209,
+                    "Id": 162,
+                    "BeginOffset": 3179,
+                    "EndOffset": 3185,
+                    "Text": "500 mg",
+                    "Traits": []
+                },
+                {
+                    "Type": "FREQUENCY",
+                    "Score": 0.9988786578178406,
+                    "RelationshipScore": 0.9999368190765381,
+                    "Id": 163,
+                    "BeginOffset": 3186,
+                    "EndOffset": 3191,
+                    "Text": "daily",
+                    "Traits": []
+                }
+            ]
+        },
+        {
+            "Id": 164,
+            "BeginOffset": 3209,
+            "EndOffset": 3217,
+            "Score": 0.954130232334137,
+            "Text": "lycopene",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 165,
+            "BeginOffset": 3219,
+            "EndOffset": 3227,
+            "Score": 0.9917275905609131,
+            "Text": "selenium",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 166,
+            "BeginOffset": 3233,
+            "EndOffset": 3241,
+            "Score": 0.6625878214836121,
+            "Text": "flaxseed",
+            "Category": "MEDICATION",
+            "Type": "GENERIC_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 144,
+            "BeginOffset": 3274,
+            "EndOffset": 3278,
+            "Score": 0.550673246383667,
+            "Text": "labs",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 145,
+            "BeginOffset": 3312,
+            "EndOffset": 3333,
+            "Score": 0.9695389270782471,
+            "Text": "fasting lipid profile",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": []
+        },
+        {
+            "Id": 146,
+            "BeginOffset": 3338,
+            "EndOffset": 3341,
+            "Score": 0.9097438454627991,
+            "Text": "ALT",
+            "Category": "TEST_TREATMENT_PROCEDURE",
+            "Type": "TEST_NAME",
+            "Traits": []
+        }
+    ],
+    "UnmappedAttributes": []
+}

@@ -1,0 +1,227 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>amazon-comprehend-medical-fhir-integration</groupId>
+  <artifactId>amazon-comprehend-medical-fhir-integration</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+	<dependencies>
+		<!--  cognito sdk -->
+	    <dependency>
+		      <groupId>com.amazonaws</groupId>
+		      <artifactId>aws-java-sdk-cognitoidp</artifactId>
+		      <version>1.11.531</version>
+    	</dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-lambda-java-core</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+	    <dependency>
+		      <groupId>com.amazonaws</groupId>
+		      <artifactId>aws-lambda-java-events</artifactId>
+		      <version>2.2.6</version>
+    	</dependency>
+    	<!-- 
+    	<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>5.1.6.RELEASE</version>
+		</dependency>
+    	-->
+    	<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-secretsmanager -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-secretsmanager</artifactId>
+		    <version>1.11.531</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-bom</artifactId>
+		    <version>1.11.531</version>
+		    <type>pom</type>
+		    <scope>import</scope>
+		</dependency>	
+    	
+	    <dependency>
+	      <groupId>com.amazonaws</groupId>
+	      <artifactId>aws-java-sdk-s3</artifactId>
+	      <version>1.11.531</version>
+	    </dependency>
+	    <!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-stepfunctions -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-stepfunctions</artifactId>
+		    <version>1.11.531</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-comprehendmedical -->
+		<dependency>
+		    <groupId>com.amazonaws</groupId>
+		    <artifactId>aws-java-sdk-comprehendmedical</artifactId>
+		    <version>1.11.546</version>
+		</dependency>
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-log4j2</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.8.2</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.8.2</version>
+		</dependency>
+		-->
+		<!-- https://mvnrepository.com/artifact/ca.uhn.hapi/hapi-structures-v23 -->
+		<dependency>
+		    <groupId>ca.uhn.hapi</groupId>
+		    <artifactId>hapi-structures-v23</artifactId>
+		    <version>2.3</version>
+		</dependency>
+		
+		<!--  HAPI FHIR Dependency -->
+		<!-- This dependency includes the core HAPI-FHIR classes -->
+		
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-base</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+
+		<!-- At least one "structures" JAR must also be included -->
+
+		<dependency>
+			<groupId>ca.uhn.hapi.fhir</groupId>
+			<artifactId>hapi-fhir-structures-dstu3</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+		
+		<!-- FHIR validation resources for HAPI FHIR -->
+		
+		<dependency>
+		    <groupId>ca.uhn.hapi.fhir</groupId>
+		    <artifactId>hapi-fhir-validation-resources-dstu3</artifactId>
+		    <version>3.5.0</version>
+		</dependency>
+				
+		<dependency>
+		  <groupId>com.google.code.gson</groupId>
+		  <artifactId>gson</artifactId>
+		  <version>2.8.5</version>
+		</dependency>	
+
+		<!-- if you are using Jersey client specific features without the server side -->
+		<dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-client</artifactId>
+		    <version>2.28</version>
+		
+		</dependency>
+		<dependency>
+		    <groupId>org.glassfish.jersey.inject</groupId>
+		    <artifactId>jersey-hk2</artifactId>
+		    <version>2.28</version>
+		</dependency>		
+		<!-- json-path dependency -->
+		<dependency>
+		    <groupId>com.jayway.jsonpath</groupId>
+		    <artifactId>json-path</artifactId>
+		    <version>2.4.0</version>
+		</dependency>		
+		
+		<dependency>
+		    <groupId>org.apache.velocity</groupId>
+		    <artifactId>velocity</artifactId>
+		    <version>1.7</version>
+		    </dependency>
+		<dependency>
+		     <groupId>org.apache.velocity</groupId>
+		     <artifactId>velocity-tools</artifactId>
+		     <version>2.0</version>
+		</dependency>	
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		
+		<resources>
+			<resource>
+				<directory>resources</directory>
+				<includes>
+				<include>**/*.xml</include>
+				<include>**/*.template</include>
+				</includes>
+			</resource>
+		
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.1.1</version>
+				<configuration>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer">
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.github.edwgiz</groupId>
+						<artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
+						<version>2.8.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<swagger-core-version>1.5.15</swagger-core-version>
+		<jetty-version>9.2.9.v20150224</jetty-version>
+		<jersey2-version>2.22.2</jersey2-version>
+		<jackson-version>2.8.9</jackson-version>
+		<junit-version>4.12</junit-version>
+		<logback-version>1.1.7</logback-version>
+		<servlet-api-version>2.5</servlet-api-version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>  
+</project>

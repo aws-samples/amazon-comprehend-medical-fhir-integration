@@ -1,0 +1,26 @@
+{
+	"resourceType": "Bundle",
+	"type": "collection",
+	"entry": [
+		{
+			"fullUrl": "urn:uuid:ddf5cf6d-98e9-44ae-84f2-d4dccc3916fa",
+			"resource": {
+				"resourceType": "Basic",
+				"id": "$guid",
+				"meta": {
+					"profile": [
+						"http://standardhealthrecord.org/fhir/StructureDefinition/shr-entity-Person"
+					]
+				},
+				"code": {
+					"coding": [
+						{
+							"system": "http://standardhealthrecord.org/fhir/basic-resource-type",
+							"code": "shr-entity-Person",
+							"display": "shr-entity-Person"
+						}
+					]
+				}
+			}
+		}
+  }
