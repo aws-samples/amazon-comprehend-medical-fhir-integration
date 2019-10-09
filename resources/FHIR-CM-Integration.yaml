@@ -348,7 +348,7 @@ Resources:
       Name: !Ref 'CognitoSecretName'
       Description: This secret has a hardcoded password in SecretString (use GenerateSecretString instead)
       # Replace the user name , passsword and client id from the values in the lab
-      SecretString: '{"username":"cm-user","password":"Master123!","client-id":"5obgic32lccfpqeef66ai1s0v"}'
+      SecretString: '{"username":"workshopuser","password":"Master123!","client-id":"<<REPLACE_CLIENT_ID>>"}'
       Tags:
         -
           Key: AppName
