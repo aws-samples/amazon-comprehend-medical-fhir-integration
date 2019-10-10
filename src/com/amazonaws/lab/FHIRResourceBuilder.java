@@ -531,22 +531,24 @@ public class FHIRResourceBuilder {
 				String bodySnomedCode = "";
 				if (bodyText != null) {
 					// SNOMED CT call for body site
-					target = client.target(getUrl() + "/descriptions?query="
-							+ URLEncoder.encode(bodyText == null ? "" : bodyText, "UTF-8").replaceAll("\\+", "%20")
-							+ "&limit=50&searchMode=partialMatching" + "&lang=english&statusFilter=activeOnly&skipTo=0"
-							+ "&returnLimit=100&normalize=true");
+					target = client
+							.target(baseUrl + "/descriptions?"
+									+ "&limit=50&term="
+									+ URLEncoder.encode(condition == null ? "" : condition, "UTF-8").replaceAll("\\+",
+											"%20")
+									+"&conceptActive=true&lang=english&skipTo=0&returnLimit=100");
 
 					response = target.request(MediaType.APPLICATION_JSON).get();
 					resultString = response.readEntity(String.class);
-					//log.debug("The result string : " + resultString);
+					log.debug("The result string : " + resultString);
 					//log.debug(JsonPath.read(resultString, "$..matches[0].conceptId").toString());
-					list = JsonPath.read(resultString, "$..matches[0].conceptId");
+					list = JsonPath.read(resultString, "$..conceptId");
 
 					if (list != null && list.size() > 0) {
 						bodySnomedCode = list.get(0);
 					}
 
-					//log.debug("The body snomed code : " + bodySnomedCode);
+					log.debug("The body snomed code : " + bodySnomedCode);
 				}
 
 				VelocityEngine ve = new VelocityEngine();
