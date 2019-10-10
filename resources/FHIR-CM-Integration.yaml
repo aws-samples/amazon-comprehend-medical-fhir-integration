@@ -5,7 +5,7 @@ Parameters:
   FHIRAPIEndpoint:
     Type: String
     #Replae the FHIR API end point from lab
-    Default: "https://0ic0tntg82.execute-api.us-west-2.amazonaws.com/Prod/"
+    Default: "<<REPLACE_API_ENDPOINT>>"
   CognitoSecretName:
     Type: String
     Default: "MM-CMClientCognitoSecret"
@@ -165,7 +165,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.HealthDataEventHandler::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       #AutoPublishAlias: !Ref LambdaAlias
       Runtime: java8
       MemorySize: 512
@@ -211,7 +211,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.HealthDataRouter::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       Runtime: java8
       MemorySize: 512
       Timeout: 300
@@ -223,7 +223,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.HL7DataHandler::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       #AutoPublishAlias: !Ref LambdaAlias
       Runtime: java8
       MemorySize: 512
@@ -253,7 +253,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.FHIRDataHandler::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       #AutoPublishAlias: !Ref LambdaAlias
       Runtime: java8
       MemorySize: 512
@@ -279,7 +279,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.SendToCM::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       Runtime: java8
       MemorySize: 512
       Timeout: 300
@@ -308,7 +308,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: com.amazonaws.lab.FHIRResourceBuilder::handleRequest
-      CodeUri: ../target/FHIR-CM-Integration-0.0.1-SNAPSHOT.jar
+      CodeUri: ../target/amazon-comprehend-medical-fhir-integration-0.0.1-SNAPSHOT.jar
       Runtime: java8
       MemorySize: 512
       Timeout: 300

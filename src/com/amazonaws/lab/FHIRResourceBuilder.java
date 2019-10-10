@@ -63,7 +63,7 @@ public class FHIRResourceBuilder {
 
 	static final Logger log = LogManager.getLogger(FHIRResourceBuilder.class);
 	/** The base url. */
-	private final String baseUrl = "https://browser.ihtsdotools.org/api/v2/snomed/";
+	private final String baseUrl = "https://browser.ihtsdotools.org/snowstorm/snomed-ct/v2/browser/MAIN";
 
 	/** The edition. */
 	private final String edition = "en-edition";
@@ -508,18 +508,20 @@ public class FHIRResourceBuilder {
 				final Client client = ClientBuilder.newClient();
 
 				// SNOMED CT call for condition
+
 				WebTarget target = client
-						.target(getUrl() + "/descriptions?query="
+						.target(baseUrl + "/descriptions?"
+								+ "&limit=50&term="
 								+ URLEncoder.encode(condition == null ? "" : condition, "UTF-8").replaceAll("\\+",
 										"%20")
-								+ "&limit=50&searchMode=partialMatching"
-								+ "&lang=english&statusFilter=activeOnly&skipTo=0" + "&returnLimit=100&normalize=true");
+								+"&conceptActive=true&lang=english&skipTo=0&returnLimit=100");
 
 				Response response = target.request(MediaType.APPLICATION_JSON).get();
 				String resultString = response.readEntity(String.class);
-				//log.debug("The result string : " + resultString);
+				log.debug("The result string : " + resultString);
 				//log.debug(JsonPath.read(resultString, "$..matches[0].conceptId").toString());
-				List<String> list = JsonPath.read(resultString, "$..matches[0].conceptId");
+				//List<String> list = JsonPath.read(resultString, "$..matches[0].conceptId");
+				List<String> list = JsonPath.read(resultString, "$..conceptId");
 				String condNnomedCode = "";
 				if (list != null && list.size() > 0) {
 					condNnomedCode = list.get(0);
