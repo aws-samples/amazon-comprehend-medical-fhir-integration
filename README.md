@@ -8,20 +8,20 @@ The workshop is divided into two parts. The first part of the workshop focusses 
 
 ## Part 1 - Build FHIR Interface
 
-[Image: image.png]
+![Architecture Diagram](images/part-1-image-1.png)
 1. Log on to the AWS management console and change your region from the top right corner to US East(N. Virgina) or any US region of your choice .
 2. Click on services and search for cloud9. Cloud9 service is a browser based built-in IDE desktop to write code, run CLI commands or create container images. It has a pre-configured AWS CLI and provides a linux terminal to run commands.
 3. Create a new environment and call it as FHIRDesktop. **Use m4.large type. Leave the other settings as default.**
 
-[Image: Image.jpg]
+![Cloud9](images/part-1-image-2.png)
 
-## Download source code 
+## Download source code
 
 1. Go to the terminal window at the lower pane and checkout the source code from git hub using the following command:
 2.  `git clone https://github.com/mithun008/FHIRServer.git`
 3. Make sure that required folders are present by navigating through the directory FHIRServer directory. There should be a resources and src folder and also a pom.xml file.
 
-[Image: Image.jpg]
+![Cloud9](images/part-1-image-3.png)
 ## Setup the environment
 
 1. Locate the terminal window on the lower pane of the screen.
@@ -53,7 +53,7 @@ We will create the S3 bucket in this step which will be used later as part of th
 2. Build the source code by running `mvn install`
 
 The above command would download all the required libraries to compile the source and build a single jar file with all the required dependencies. The output jar can be found under target/ directory as FHIRServer-0.0.1-SNAPSHOT.jar file.
-[Image: Image.jpg]
+![Cloud9](images/part-1-image-4.png)
 ## Deploy FHIR Interface code
 
 Go to the resources folder and check the file FHIRService-dev-swagger-apigateway.yaml. This file is the SAM(Serverless Application Model) template that will be used to deploy the generated jar as a lambda function along with other resources like DynamoDB table, API gateway resources, Cognito user pool and S3 bucket to store FHIR payloads.The SAM template will template would be transformed into a cloudformation template which can be used to deploy the resources.
@@ -66,7 +66,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
 `aws cloudformation package --template-file FHIRService-dev-swagger-apigateway.yaml --output-template-file serverless-output.yaml --s3-bucket <<Replace the S3 bucket name>>`
 
 ***Note : If you face any difficulties in copy pasting the above command, please edit command #1 in commands.txt file under the resources folder and paste it to the terminal window.***
-[Image: Image.jpg]The output should look like as shown above in the screenshot. The command uploads the jar file to S3 bucket and generates a cloudformation template file serverless-output.yaml file which will be used to do the actual deployment of resources.
+![Cloud9](images/part-1-image-5.png)The output should look like as shown above in the screenshot. The command uploads the jar file to S3 bucket and generates a cloudformation template file serverless-output.yaml file which will be used to do the actual deployment of resources.
 
 **Tip : **Feel free to open the serverless-output.yaml file in cloud9 IDE to check the contents.
 
@@ -80,24 +80,24 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
 The command will wait until all the resources are created. Once, the command is finished and stack creation is complete, navigate to API gateway and lambda services to check the services that have been deployed by the cloudformation template.
 
 Go to the AWS management console and search for API Gateway service. API Gateway should have the resources deployed as shown below:
-[Image: image.png]
+![Cloud9](images/part-1-image-6.png)
 Go to Lambda service and Lambda deployment should be listed as below:
-[Image: image.png]
-### 
+![Cloud9](images/part-1-image-7.png)
+###
 
 1. Navigate to API Gateway and click on the <<Your Stack Name>> link and go under Dashboard link on the left side. It should show a link on the right side. Copy the link and save it in a document. It will be referred as the **API_END_POINT** from here on.** Please make a note of it. It will be used in part -2 of the lab as well.**
 
-[Image: image.png]
+![Cloud9](images/part-1-image-8.png)
 ### Capability Statement
 
-A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.Capability statement for the FHIR server can be accessed without any authorization. 
+A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.Capability statement for the FHIR server can be accessed without any authorization.
 
 1. Go to the cloud9 terminal window again and run the following command:
 
 `curl -H "Accept: application/fhir+json" <<API_END_POINT>>metadata | jq`
 
 The output should be similar to as shown below in screenshot:
-[Image: image.png]
+![Cloud9](images/part-1-image-9.png)
 ## Cognito Setup
 
 In this section we will create a user in Cognito user pool and provision a user for sending an authorized request to API Gateway. Amazon Cognito lets you add user sign-up, sign-in, and access control to your web and mobile apps quickly and easily. Amazon Cognito provides solutions to control access to AWS resources from your app. You can define roles and map users to different roles so your app can access only the resources that are authorized for each user.
@@ -106,22 +106,22 @@ In this section we will create a user in Cognito user pool and provision a user 
 1. Search for Cognito in the services search bar on main page.
 2. Click on Manage User Pools and it should show the user pools that have been created so far. There should be an entry for the stack name that was used **like** FHIRWorkshop.
 
-[Image: Image.jpg]
-1. Click on the FHIRWorkshop(or the stack name that was used) link from the user pool. 
+![Cloud9](images/part-1-image-10.png)
+1. Click on the FHIRWorkshop(or the stack name that was used) link from the user pool.
 
 1. Go to General settings and note down the Pool id. It will be used as part of a CLI command.
 
-[Image: image.png]
+![Cloud9](images/part-1-image-11.png)
 1. Click on App client settings under App integration. Note down the ID.
 
-[Image: Image.jpg]
+![Cloud9](images/part-1-image-12.png)
 1. Go to resources folder and edit provision-user.py. Replace the POOL ID and CLIEN ID tags with values captured above.
 2. Run the provision-user.py by executing the below command. It will create an user in cognito user pool. The user name is **workshopuser** and password will be **Master123!.**
 3. python provision-user.py
 
 The output would look like as the screenshot below. **Copy the output value as it will be used as the IDToken in next step.**
 **Keep the cognito userid and password  saved in a notepad as it will be used in part 2 of the lab. **The ID token is a JWT token which is used by cognito to authorize users. More details about JWT can be found at [jwt.io](http://jwt.io/)
-[Image: image.png]*You can confirm the user creation by going to users and groups under general settings for the user pool. You may need to refresh the page if it does not show up immediately.*
+![Cloud9](images/part-1-image-13.png)*You can confirm the user creation by going to users and groups under general settings for the user pool. You may need to refresh the page if it does not show up immediately.*
 
 We are now ready to send requests to our FHIR server. Lets test a GET patient request first to make sure there is no data loaded.
 
@@ -129,7 +129,7 @@ We are now ready to send requests to our FHIR server. Lets test a GET patient re
 
 `curl -H "Accept: application/fhir+json" -H "Authorization:<<ID Token>>" <<API_END_POINT>>Patient | jq`
 The output should show as below:
-[Image: image.png]The following text should be shown as part of the output.
+![Cloud9](images/part-1-image-14.png)The following text should be shown as part of the output.
 
 `{"resourceType":"Bundle","id":"e4679c49-37af-4478-91d8-4741a293a975","type":"searchset","total":0,"link":[{"relation":"self"}]}`
 
@@ -186,7 +186,7 @@ rm synthea/output/fhir_stu3/*
 `./run_synthea`
 ```
 
-The tool will generate a FHIR resources file under **synthea/output/fhir_stu3** directory. The patient name would be shown in the output of the command. 
+The tool will generate a FHIR resources file under **synthea/output/fhir_stu3** directory. The patient name would be shown in the output of the command.
 [Image: image.png]
 1. Open the file in cloud9 editor to check the file generated. It will have Patient and several other resources that have been generated by synthea. Copy the name of the output file to use in the next step.
 2. Run the following command to extract the required info for the workshop.
@@ -199,7 +199,7 @@ The output would be similar to the screenshot below. **Copy the output in a note
 [Image: image.png]
 ## Load data to FHIR repository
 
-We will now load the patient record to an existing FHIR repository. 
+We will now load the patient record to an existing FHIR repository.
 
 1. Go to **resources** folder under **amazon-comprehend-medical-fhir-integration**
 
@@ -263,7 +263,7 @@ aws s3 mb s3://<<FHIR_CODE_BUCKET>>
 `aws cloudformation deploy --template-file /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/resources/serverless-output.yaml --stack-name <<STACK_NAME>> --capabilities CAPABILITY_IAM`
 
 1. Login to aws console and go to cloudfromation service. Look for the template <<STACK_NAME>>. Under outputs, there will be the name of a S3 bucket that was created by the template. Note down the bucket name. It will be referred to as DATA_INPUT_BUCKET.
-    
+
 
 ## HL7 Message Flow
 
@@ -321,8 +321,3 @@ Look for the conditions again. It should show the additional conditions that wer
 
 `curl -H "Accept: application/fhir+json" -H "Authorization:<<ID Token>>" <<API_END_POINT>>Condition?patient-ref-id=<<PATIENT_ID>> | jq`
 It should now show the additional Conditions that were loaded from the notes in the DocumentReference resource.
-
-
- 
- 
-
