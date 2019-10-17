@@ -1,5 +1,5 @@
 MSH|^~\&|Epic|Epic|||20160510071633||MDM^T02|12345|D|2.3
-PID|1||<<MEDICAL_RECORD_NO>>^^^^EPI||<<LAST_NAME>>^<<FIRST_NAME>>^J^^MR.^||<<DATE_OF_BIRTH>>|<<GENDER>>||AfrAm|377 Kuhic Station Unit 91^^<<ADDRESS_CITY>>^MA^01507^US^^^DN |DN|(608)123-9998|(608)123-5679||S||18273652|123-45-9999||||^^^WI^^
+PID|1||4a7e070d-0eb7-47ef-9bba-23a81ce1570f^^^^EPI||Adams676^Sudie246^J^^MR.^||19761015|F||AfrAm|377 Kuhic Station Unit 91^^Waltham^MA^01507^US^^^DN |DN|(608)123-9998|(608)123-5679||S||18273652|123-45-9999||||^^^WI^^
 PV1|||^^^CARE HEALTH SYSTEMS^^^^^||||||1173^MATTHEWS^JAMES^A^^^||||||||||||
 TXA||CN||20160510071633|1173^MATTHEWS^JAMES^A^^^|||||||^^12345|||||PA|
 OBX|1|TX|||Clinical summary: Based on the information provided, the patient likely has viral sinusitis commonly called a head cold.
