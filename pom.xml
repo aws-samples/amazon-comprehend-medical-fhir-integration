@@ -88,7 +88,7 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-base</artifactId>
-			<version>3.5.0</version>
+			<version>3.8.0</version>
 		</dependency>
 
 		<!-- At least one "structures" JAR must also be included -->
@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-structures-dstu3</artifactId>
-			<version>3.5.0</version>
+			<version>3.8.0</version>
 		</dependency>
 		
 		<!-- FHIR validation resources for HAPI FHIR -->
@@ -104,7 +104,7 @@
 		<dependency>
 		    <groupId>ca.uhn.hapi.fhir</groupId>
 		    <artifactId>hapi-fhir-validation-resources-dstu3</artifactId>
-		    <version>3.5.0</version>
+		    <version>3.8.0</version>
 		</dependency>
 				
 		<dependency>
