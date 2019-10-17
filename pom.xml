@@ -88,7 +88,7 @@
 		<dependency>
 			<groupId>ca.uhn.hapi.fhir</groupId>
 			<artifactId>hapi-fhir-base</artifactId>
-			<version>3.5.0</version>
+			<version>3.8.0</version>
 		</dependency>
 
 		<!-- At least one "structures" JAR must also be included -->
