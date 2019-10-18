@@ -80,6 +80,7 @@ public class FHIRResourceBuilder {
 	// private static final String FHIR_API_ENDPOINT =
 	// System.getenv("FHIR_API_ENDPOINT");
 	private static final String FHIR_API_ENDPOINT = System.getenv("FHIR_API_ENDPOINT");
+	private static final String COGNITO_CLIENT_ID = System.getenv("COGNITO_CLIENT_ID");
 
 	private static FhirContext fhirContext = FhirContext.forDstu3();
 	
@@ -373,7 +374,8 @@ public class FHIRResourceBuilder {
 		log.debug("The secret value : "+secValRes.getSecretString());
 		String userName = JsonPath.read(cognitoProps, "$.username");
 		String password = JsonPath.read(cognitoProps, "$.password");
-		String cognitoClientid = JsonPath.read(cognitoProps, "$.client-id");
+		//String cognitoClientid = JsonPath.read(cognitoProps, "$.client-id");
+		
 		
 		Map<String,String> initialParams = new HashMap<String,String>();
 		log.debug("The user id : "+userName);
@@ -384,7 +386,7 @@ public class FHIRResourceBuilder {
 		InitiateAuthRequest initiateAuth = new InitiateAuthRequest()
 				.withAuthFlow(AuthFlowType.USER_PASSWORD_AUTH)
 				.withAuthParameters(initialParams)
-				.withClientId(cognitoClientid);
+				.withClientId(COGNITO_CLIENT_ID);
 		
 
 		//AdminInitiateAuthResult initialResponse = cognitoClient.initiateAuth(initiateAuth);

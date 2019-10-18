@@ -5,7 +5,7 @@ Parameters:
   FHIRAPIEndpoint:
     Type: String
     #Replae the FHIR API end point from lab
-    Default: "<<REPLACE_API_ENDPOINT>>"
+    Default: ""
   CognitoSecretName:
     Type: String
     Default: "MM-CMClientCognitoSecret"
@@ -13,8 +13,9 @@ Parameters:
     Type: String
     #Replae the FHIR time zone
     Default: "America/Los_Angeles"
-
-
+  ClientId:
+    Type: String
+    Default: ""
 
 Resources:
   # SQS queue to store object create notifications from S3
@@ -341,6 +342,7 @@ Resources:
           FHIR_API_ENDPOINT: !Ref FHIRAPIEndpoint
           COGNITO_SECRET_NAME: !Ref CognitoSecretName
           FHIR_TIME_ZONE: !Ref FHIRTimeZone
+          COGNITO_CLIENT_ID: !Ref ClientId
   # For the demo, password hardcoded into the template (NOT RECOMMENDED)
   CognitoSecretStore:
     Type: 'AWS::SecretsManager::Secret'
@@ -348,7 +350,7 @@ Resources:
       Name: !Ref 'CognitoSecretName'
       Description: This secret has a hardcoded password in SecretString (use GenerateSecretString instead)
       # Replace the user name , passsword and client id from the values in the lab
-      SecretString: '{"username":"workshopuser","password":"Master123!","client-id":"<<REPLACE_CLIENT_ID>>"}'
+      SecretString: '{"username":"workshopuser","password":"Master123!"}'
       Tags:
         -
           Key: AppName
