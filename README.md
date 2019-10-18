@@ -232,6 +232,7 @@ aws s3 cp mdm.txt s3://<<DATA_INPUT_BUCKET>>/input/hl7/mdm.txt
 ```
 
 
+
 The above command should trigger the step functions. You can monitor the progress of the step functions by login to the console and going to the step functions service. Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
 [Image: image.png]
 1. Run the below command again to lookup the conditions for the patient:
