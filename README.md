@@ -2,10 +2,10 @@
 
 Workshop demonstrating the use of Amazon Comprehend Medical to extract clinical entities from unstructured text and map them to FHIR resources. It is divided into two parts. The first part covers creation of the FHIR interface and second part covers integration with Comprehend Medical.
 
-[Lab 1 : Building the FHIR Interface](Lab1.md)
+[Lab 1 : Building the FHIR Interface](lab1.md)
 
 
-[Lab 2 : Integration with Amazon Comprehend Medical](Lab2.md)
+[Lab 2 : Integration with Amazon Comprehend Medical](lab2.md)
 
 ## License Summary
 
