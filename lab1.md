@@ -8,12 +8,12 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 
 ## Lab 1 - Build FHIR Interface
 
-[Image: image.png]
+![FHIR Server](images/part-1-image-1.png)
 1. Log on to the AWS management console and change your region from the top right corner to US East(N. Virgina) or any US region of your choice .
 1. Click on services and search for cloud9. Cloud9 service is a browser based built-in IDE desktop to write code, run CLI commands or create container images. It has a pre-configured AWS CLI and provides a linux terminal to run commands.
 1. Create a new environment and call it as FHIRDesktop. **Use m4.large type. Leave the other settings as default.**
 
-[Image: Image.jpg]
+![FHIR Server](images/part-1-image-2.png)
 
 ## Download source code 
 
@@ -25,7 +25,7 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 
 1. Make sure that required folders are present by navigating through the directory FHIRServer directory. There should be a resources and src folder and also a pom.xml file.
 
-[Image: Image.jpg]
+![FHIR Server](images/part-1-image-3.png)
 ## Setup the environment
 
 1. Locate the terminal window on the lower pane of the screen.
@@ -60,7 +60,7 @@ aws s3 mb s3://<<PACKAGE_BUCKET_NAME>>
 2. Build the source code by running `mvn clean install`
 
 The above command would download all the required libraries to compile the source and build a single jar file with all the required dependencies. The output jar can be found under target/ directory as FHIRServer-0.0.1-SNAPSHOT.jar file.
-[Image: Image.jpg]
+![FHIR Server](images/part-1-image-4.png)
 ## Deploy FHIR Interface code
 
 Go to the resources folder and check the file FHIRService-dev-swagger-apigateway.yaml. This file is the SAM(Serverless Application Model) template that will be used to deploy the generated jar as a lambda function along with other resources like DynamoDB table, API gateway resources, Cognito user pool and S3 bucket to store FHIR payloads. The package command transforms SAM template into a cloudformation template which can be used to deploy the resources.
@@ -86,7 +86,10 @@ chmod u+x deploy-fhir-server.sh
 ```
 
 The final output will have four parameter values. Please make a note of it to be used in later steps. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(used as the Authorization value for any curl request to FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. All the values will be used in later steps.
-[Image: image.png]We have now created a serverless FHIR interface. 
+
+![FHIR Server](images/part-1-image-5.png)
+
+We have now created a serverless FHIR interface. 
 
 You can navigate through the API gateway, Lambda and DynamoDB web consoles to review the various resources. API Gateway will provide you the API definitions for the various resources(like Patient, Observation and Condition) as well as the backend integration with lambda. It also has the authorization defined with Amazon Cognito. The API definitions can also be exported from API gateway if you need to share it with developers. DynamoDB has the tables which store the JSON payloads and it will show you the index definitions that are used for searching the resources. 
 
