@@ -10,8 +10,8 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 
 [Image: image.png]
 1. Log on to the AWS management console and change your region from the top right corner to US East(N. Virgina) or any US region of your choice .
-2. Click on services and search for cloud9. Cloud9 service is a browser based built-in IDE desktop to write code, run CLI commands or create container images. It has a pre-configured AWS CLI and provides a linux terminal to run commands.
-3. Create a new environment and call it as FHIRDesktop. **Use m4.large type. Leave the other settings as default.**
+1. Click on services and search for cloud9. Cloud9 service is a browser based built-in IDE desktop to write code, run CLI commands or create container images. It has a pre-configured AWS CLI and provides a linux terminal to run commands.
+1. Create a new environment and call it as FHIRDesktop. **Use m4.large type. Leave the other settings as default.**
 
 [Image: Image.jpg]
 
@@ -19,9 +19,9 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 
 1. Go to the terminal window at the lower pane and checkout the source code from git hub using the following command:
 
-```
- `git clone https://github.com/mithun008/FHIRServer.git`
-```
+   ```
+   git clone https://github.com/mithun008/FHIRServer.git
+   ```
 
 1. Make sure that required folders are present by navigating through the directory FHIRServer directory. There should be a resources and src folder and also a pom.xml file.
 
@@ -29,16 +29,16 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 ## Setup the environment
 
 1. Locate the terminal window on the lower pane of the screen.
-2. Change directory to FHIRServer/resources.
+1. Change directory to FHIRServer/resources.
 
-```
-cd FHIRServer/resources/
-```
+   ```
+   cd FHIRServer/resources/
+   ```
 
 1. Run the script by executing following command.** Please answer ‘y’ when prompted for permission to download some of the packages.**
 
 ```
-. .`/setupEnv.sh`
+. ./setupEnv.sh
 ```
 
 The script would upgrade the jdk to 1.8. By default, cloud9 comes with jdk 1.7. It will also set the default jdk as 1.8. It would also install maven required for building the code. A package to beautify json output is also installed.
@@ -51,7 +51,7 @@ We will create the S3 bucket in this step which will be used later as part of th
 1. Run the following command on terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<user initials>> for the bucket otherwise the command will throw an error.
 
 ```
-`aws s3 mb s3``:``//<<PACKAGE_BUCKET_NAME>>`
+aws s3 mb s3://<<PACKAGE_BUCKET_NAME>>
 ```
 
 **Keep a note of this bucket name as it will be used in the later steps.**
@@ -70,7 +70,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
 1. Go to **resources** directory under FHIR server in the terminal window. Run the following command:
 
 ```
-`cd ~/environment/FHIRServer/resources/`
+cd ~/environment/FHIRServer/resources/
 ```
 
 1. Run following command to change the permission on the deploy file.
@@ -86,7 +86,10 @@ chmod u+x deploy-fhir-server.sh
 ```
 
 The final output will have four parameter values. Please make a note of it to be used in later steps. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(used as the Authorization value for any curl request to FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. All the values will be used in later steps.
-[Image: image.png]We have now created a serverless FHIR interface. You can navigate through the API gateway, Lambda and DynamoDB web consoles to review the various resources. API Gateway will provide you the API definitions for the various resources(like Patient, Observation and Condition) as well as the backend integration with lambda. It also has the authorization defined with Amazon Cognito. The API definitions can also be exported from API gateway if you need to share it with developers. DynamoDB has the tables which store the JSON payloads and it will show you the index definitions that are used for searching the resources. 
+[Image: image.png]We have now created a serverless FHIR interface. 
 
-In the next part of the lab, we will focus on loading test data and integrating it with comprehend medical.
+You can navigate through the API gateway, Lambda and DynamoDB web consoles to review the various resources. API Gateway will provide you the API definitions for the various resources(like Patient, Observation and Condition) as well as the backend integration with lambda. It also has the authorization defined with Amazon Cognito. The API definitions can also be exported from API gateway if you need to share it with developers. DynamoDB has the tables which store the JSON payloads and it will show you the index definitions that are used for searching the resources. 
 
+In the next lab, we will focus on loading test data and integrating it with comprehend medical.
+
+Click [here](lab2.md) to go to next lab.
