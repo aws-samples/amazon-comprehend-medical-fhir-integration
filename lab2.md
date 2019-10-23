@@ -21,7 +21,7 @@ This section of the lab will focus on integrating Comprehend Medical with the FH
 
 ## Load data to FHIR repository
 
-We will now load the patient record to an existing FHIR repository. 
+We will now load a patient record to an existing FHIR repository. The test file used here was generated using Synthea. Synthea is a synthetic patient generator that models the medical history of synthetic patients. It is widely used in the healthcare industry to output high-quality synthetic, realistic but not real, patient data and associated health records covering every aspect of healthcare. More details about Synthea can be found [here](https://github.com/synthetichealth/synthea/wiki).
 
 1. Go to test-data folder by running following command.
     ```
@@ -43,7 +43,9 @@ The output would be similar to the screenshot below. **Copy the output in a note
 
 1. Open the file post-test-data.sh in the editor under resources.Enable wrap lines from the “View” menu option to have a better view. 
 
-**Replace the API_END_POINT with the value generated in Part 1 of the workshop. Also replace the ID TOKEN with the copied and saved token value from Part 1 of the workshop.  Save the updated file post-test-data.sh (File→Save menu item) before running the next step.**
+**Replace the API_END_POINT with the value generated in Part 1 of the workshop. Also replace the ID TOKEN with the copied and saved token value from Part 1 of the workshop.**
+
+**Save the updated file post-test-data.sh (File→Save menu item) before running the next step.**
 
 1. Change the terminal directory by running following command:
 
@@ -86,14 +88,13 @@ The output should be similar to below:
     cd /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/
     ```
 
-1. Next, build the project by running the following:
+1. Next, build the project by running the following mavan command. 
 
     ```
     mvn clean install
     ```
 
-The build process will create the jar file that will be deployed as the lambda functions to process the hl7 and FHIR resource files, call comprehend medical api's and make API calls to an existing FHIR repository.
-
+The build process will create a single jar file. It has different classes that are deployed as lambda functions to process hl7 and FHIR resource files, call comprehend medical api's and make API calls to an existing FHIR repository.
 
 
 ## Deploy the project code ##
