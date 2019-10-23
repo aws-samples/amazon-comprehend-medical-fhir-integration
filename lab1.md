@@ -1,10 +1,8 @@
 # Reinvent -2019 - HLC 401 - Lab Instructions - Master
 
-**Pre-requisites : **The workshop assumes that the participants have some basic understanding of AWS services such as AWS Lambda, IAM, DynamoDB and the Java programming language.  The account user should have admin access to create IAM roles.
+**Pre-requisites** :The workshop assumes that the participants have some basic understanding of AWS services such as AWS Lambda, IAM, DynamoDB and the Java programming language.  The account user should have admin access to create IAM roles.
 
-Note: The workshop uses us-east-1 region for all the services that are deployed as part of the workshop but participants can use any of the US regions of their choice.
-
-The workshop is divided into two parts. The first part of the workshop focuses on building a FHIR interface. It will be a RESTful endpoint which enables loading and retrieval of FHIR resources. The second part will show how Amazon Comprehend Medical can be used to extract clinical entities from HL7 V2 and FHIR messages, and load them into FHIR repository created in part 1 of the workshop.
+The workshop is divided into two parts. The first part of the workshop focuses on building a FHIR interface. It will be a RESTful endpoint which enables loading and retrieval of FHIR resources. We will deploy CapabilityStatement, Patient, Observation and Condition resources. The second part will show how Amazon Comprehend Medical can be used to extract clinical entities from HL7 V2 and FHIR messages, and load them into FHIR repository created in part 1 of the workshop.
 
 ## Lab 1 - Build FHIR Interface
 
@@ -92,6 +90,8 @@ The final output will have four parameter values. Please make a note of it to be
 We have now created a serverless FHIR interface. 
 
 You can navigate through the API gateway, Lambda and DynamoDB web consoles to review the various resources. API Gateway will provide you the API definitions for the various resources(like Patient, Observation and Condition) as well as the backend integration with lambda. It also has the authorization defined with Amazon Cognito. The API definitions can also be exported from API gateway if you need to share it with developers. DynamoDB has the tables which store the JSON payloads and it will show you the index definitions that are used for searching the resources. 
+
+If you scoll through the earlier outputs of the script, you will notice that we made a curl request for CapabilityStatement and then we also sent a request to get the Patient resources. In the next part of the lab, we will send some of these requests from command line using ID Token's acquired from Cognito. At this time, the FHIR repository does not have any data and would have returned an empty Bundle.
 
 Here is a screenshot of the API definitions from API Gateway.
 ![FHIR Server](images/part-1-image-6.png)

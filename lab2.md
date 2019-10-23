@@ -1,6 +1,6 @@
 ## Lab -2 - Integrate Comprehend Medical
 
-This section of the lab will focus on integrating Comprehend Medical with the FHIR interface.
+This section of the lab will focus on integrating Comprehend Medical with the FHIR interface. We will first load data into the FHIR repository that we created in Lab 1. The data is generated using Synthea. We will validate that the data is loaded by retrieving the patient based on the patient id. Next, we make a call to get the conditions for the patient. At this stage only the conditions that were part of the test file should be present. We then use a HL7 MDM file which has unstructured text in OBX segments as a data source, extarct conditions from this text, map it to FHIR Condition resource and load it to the repository. The patient should now have the additional Condition's loaded.
 
 
 ## Architecture & Use cases
