@@ -194,6 +194,6 @@ It should now show the additional Conditions that were loaded from the notes in 
 
 ## Cleanup 
 
-Once you have completed the workshop, simply go to the cloudformation console, select the two templates that were deployed as part of the workshop and click on delete. It will delete all the resources (except S3 buckets) that were created as part of the workshop.
+Once you have completed the workshop, go to the cloudformation console, select the two templates that were deployed as part of the workshop and click on delete. It will delete all the resources (except S3 buckets) that were created as part of the workshop.
 
 You can delete the S3 buckets manually by going to the S3 console, selecting the bucket names and click on delete. It will ask you to confirm by entering the name of the bucket.
