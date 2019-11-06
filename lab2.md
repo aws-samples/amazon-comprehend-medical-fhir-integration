@@ -78,7 +78,7 @@ The output should be similar to below:
     ```
 
 
-**Make a note of the number of conditions for the patient. We will be adding additional conditions extracted from the clinical notes. It is possible that there were no conditions loaded previously.**
+**Make a note of the number of conditions for the patient. We will be adding additional conditions extracted from the clinical notes. In this lab we used a patient with two conditions.**
 
 ## Building  amazon-comprehend-medical-fhir-integration project 
 
@@ -102,22 +102,24 @@ The build process will create a single jar file. It has different classes that a
 We will now deploy the workshop code using a SAM(Serverless Access Model) template. More details about SAM can be found [here](https://docs.aws.amazon.com/serverless-application-model/index.html).
 
 1. Go to **resources** folder under amazon-comprehend-medical-fhir-integration.  Change directory to resources folder.
+    ```
     cd ~/environment/amazon-comprehend-medical-fhir-integration/resources
+    ```
 1. Run the following command to package the code and other artifacts. Use the same bucket name from part-1 of the lab.
 
     ```
     aws cloudformation package --template-file FHIR-CM-Integration.yaml \
     --output-template-file serverless-output.yaml \
-    --s3-bucket <<FHIR_CODE_BUCKET>>
+    --s3-bucket <<PACKAGE_BUCKET_NAME>>
     ```
 
-1. Run the following command to deploy the SAM template. Specify a secret name for your Secrets Manager.
+1. Replace the API_END_POINT and Cognito CLIENT_ID values(extracted in lab1) in the below command and then run it to deploy the SAM template.
 
     ```
     aws cloudformation deploy --template-file /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/resources/serverless-output.yaml \
     --stack-name fhir-cm-integ \
     --capabilities CAPABILITY_IAM \
-    --parameter-overrides CognitoSecretName=<<REPLACE_SECRET_NAME>> \
+    --parameter-overrides CognitoSecretName=fhir-cm-secret-store \
     FHIRAPIEndpoint=<<API_END_POINT>> ClientId=<<CLIENT_ID>>
     ```
 
@@ -170,12 +172,11 @@ The above command should trigger the step functions. You can monitor the progres
 1. Run the following command to change directory to resources directory.
 
     ```
-    cd /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/test-data/
+    cd /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/
     ```
 
-1. Look for the file FHIR-DocRef.json and open it in the editor.
-1. Edit the file and look for the tag *REPLACE_WITH_PATIENT_ID*
-1. Replace it with the patient id used in scenario 1. The purpose is to extract condition resources from clinical notes embedded in the data tag of the resource and load it as Condition resources for the patient.
+1. On the left navigation pane look for the file FHIR-DocRef.json under amazon-comprehend-medical-fhir-integration/test-data. Open it in the editor to edit.
+1. Look for the tag *REPLACE_WITH_PATIENT_ID* and replace it with the patient id used in scenario 1. Make sure to save the file.The purpose is to extract condition resources from clinical notes embedded in the data tag of the resource and load it as Condition resources for the patient.
 1. Run the following command to upload the file to trigger the workflow:
 
     ```
@@ -196,4 +197,4 @@ It should now show the additional Conditions that were loaded from the notes in 
 
 Once you have completed the workshop, go to the cloudformation console, select the two templates that were deployed as part of the workshop and click on delete. It will delete all the resources (except S3 buckets) that were created as part of the workshop.
 
-You can delete the S3 buckets manually by going to the S3 console, selecting the bucket names and click on delete. It will ask you to confirm by entering the name of the bucket.
+You can delete the S3 buckets manually by going to the S3 console, selecting the bucket names and click on delete. It will ask you to confirm by entering the name of the bucket. Also, delete the cloud9 environment that was created to run the lab.
