@@ -175,8 +175,8 @@ The above command should trigger the step functions. You can monitor the progres
     cd /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/
     ```
 
-1. On the left navigation pane look for the file FHIR-DocRef.json under amazon-comprehend-medical-fhir-integration/test-data. Open it in the editor to edit.
-1. Look for the tag *REPLACE_WITH_PATIENT_ID* and replace it with the patient id used in scenario 1. Make sure to save the file.The purpose is to extract condition resources from clinical notes embedded in the data tag of the resource and load it as Condition resources for the patient.
+1. On the left navigation pane look for the file FHIR-DocRef.json under amazon-comprehend-medical-fhir-integration/test-data. Open it in the editor to make some changes.
+1. Look for the tag *REPLACE_WITH_PATIENT_ID* and replace it with the patient id used in scenario 1. Make sure to save the file.The purpose of the change is to extract condition resources from clinical notes embedded in the data tag of the resource and load it as Condition resources for the patient.
 1. Run the following command to upload the file to trigger the workflow:
 
     ```

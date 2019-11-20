@@ -7,7 +7,7 @@ The workshop is divided into two parts. The first part of the workshop focuses o
 ## Lab 1 - Build FHIR Interface
 
 ![FHIR Server](images/part-1-image-1.png)
-1. Log on to the AWS management console and change your region from the top right corner to US East(N. Virgina) or any US region of your choice .
+1. Log on to the AWS management console and make sure your region from the top right corner is set to US West(Oregon). 
 1. Click on services and search for cloud9. Cloud9 service is a browser based built-in IDE desktop to write code, run CLI commands or create container images. It has a pre-configured AWS CLI and provides a linux terminal to run commands.
 1. Create a new environment and call it as FHIRDesktop. **Use m4.large type. Leave the other settings as default.**
 
@@ -83,7 +83,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> <<STACK_NAME>>
     ```
 
-The final output will have four parameter values. Please make a note of it to be used in later steps. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(used as the Authorization value for any curl request to FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. All the values will be used in later steps.
+**The final output will have four parameter values. Copy the output in a notepad to use in later step.**. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(used as the Authorization value for any curl request to FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. All the values will be used in later steps.
 
 ![FHIR Server](images/part-1-image-5.png)
 
