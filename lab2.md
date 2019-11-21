@@ -35,17 +35,13 @@ We will now load a patient record to an existing FHIR repository. The test file 
         ~/environment/amazon-comprehend-medical-fhir-integration/test-data/master-patient-data/patient-bundle.json
     ```
 
-The output would be similar to the screenshot below. **Copy the output in a notepad to use in later step.**
+The output would be similar to the screenshot below. 
+
+
 ![CM Integration](images/part-2-image-2.png)
 
-1. Go to **resources** folder under **amazon-comprehend-medical-fhir-integration** from the left navigation pane.
 
-
-1. Open the file post-test-data.sh in the editor under resources.Enable wrap lines from the “View” menu option to have a better view. 
-
-**Replace the API_END_POINT with the value generated in Part 1 of the workshop. Also replace the ID TOKEN with the copied and saved token value from Part 1 of the workshop.**
-
-**Save the updated file post-test-data.sh (File→Save menu item) before running the next step.**
+<span style="background-color: #FFFF00">**Copy the output to a notepad or editor of your choice to use in later step.**</span>
 
 1. Change the terminal directory by running following command:
 
@@ -66,15 +62,14 @@ The output should be similar to below:
 1. Validate the data by running following command to retrieve a patient’s data. Patient ID was received from the extract info script. Click [here](#extract-key-patient-info) to extract patient info again.
 
     ```
-    curl -H "Accept: application/fhir+json" \
-    -H "Authorization:<<ID Token>>" <<API_END_POINT>>Patient/<<PATIENT_ID>> | jq
+    curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Patient/<<PATIENT_ID>> | jq
     ```
 
 1. Get the conditions for the patient by running the following command
 
     ```
     curl -H "Accept: application/fhir+json" \
-    -H "Authorization:<<ID Token>>" <<API_END_POINT>>Condition?patient-ref-id=<<PATIENT_ID>> | jq
+    -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Condition?patient-ref-id=<<PATIENT_ID>> | jq
     ```
 
 
@@ -120,7 +115,7 @@ We will now deploy the workshop code using a SAM(Serverless Access Model) templa
     --stack-name fhir-cm-integ \
     --capabilities CAPABILITY_IAM \
     --parameter-overrides CognitoSecretName=fhir-cm-secret-store \
-    FHIRAPIEndpoint=<<API_END_POINT>> ClientId=<<CLIENT_ID>>
+    FHIRAPIEndpoint=$API_EDNPOINT ClientId=$CLIENT_ID
     ```
 
 1. Get DATA_INPUT_BUCKET by running the following command.  Save this value for use by later steps.
@@ -156,13 +151,15 @@ The above command should trigger the step functions. You can monitor the progres
 1. Run the below command again to lookup the conditions for the patient:
 
     ```
-    curl -H "Accept: application/fhir+json" -H "Authorization:<<ID Token>>" <<API_END_POINT>>Condition?patient-ref-id=<<PATIENT_ID>> | jq
+    curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" \
+    "$API_EDNPOINT"Condition?patient-ref-id=<<PATIENT_ID>> | jq
+
     ```
 
     **Note: In case your ID token is expired, run the below command to get a new auth token by running the below.You can then use it in the curl request to get the Conditions.**
 
     ```
-    python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py <<CLIENT_ID>>
+    python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py $CLIENT_ID
     ```
 
     Look for the conditions again. It should show the additional conditions that were extracted from the hl7 message. This completes the second part of the lab.
@@ -186,7 +183,8 @@ The above command should trigger the step functions. You can monitor the progres
 1. Check the step functions console to monitor the progress of the work flow.
 1. Once the step functions is completed, run the following command to get the Conditions for the patient. It should now be updated with the new conditions that were loaded.
     ```
-    curl -H "Accept: application/fhir+json" -H "Authorization:<<ID Token>>" <<API_END_POINT>>Condition?patient-ref-id=<<PATIENT_ID>> | jq
+    curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" \
+    "$API_EDNPOINT"Condition?patient-ref-id=<<PATIENT_ID>> | jq
     ```
 It should now show the additional Conditions that were loaded from the notes in the DocumentReference resource.
 

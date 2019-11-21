@@ -77,13 +77,13 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     chmod u+x deploy-fhir-server.sh
     ```
 
-1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier and a name for the stack like AWS-FHIR-INTERFACE as arguments to the command.
+1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface.
 
     ```
-    ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> <<STACK_NAME>>
+    . ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> aws-fhir-interface
     ```
 
-**The final output will have four parameter values. Copy the output in a notepad to use in later step.**. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(used as the Authorization value for any curl request to FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. All the values will be used in later steps.
+**The final output will have four output values generated from the deployment. The script has set them as environment variables which will be used in later steps.**. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(Used as the Authorization value for any curl request to the FHIR interface. It is a JWT token.), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. 
 
 ![FHIR Server](images/part-1-image-5.png)
 
