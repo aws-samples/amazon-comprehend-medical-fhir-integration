@@ -41,7 +41,7 @@ The output would be similar to the screenshot below.
 ![CM Integration](images/part-2-image-2.png)
 
 
-<span style="background-color: #FFFF00">**Copy the output to a notepad or editor of your choice to use in later step.**</span>
+**Copy the output to a notepad or editor of your choice to use in later step.**
 
 1. Change the terminal directory by running following command:
 
@@ -59,7 +59,7 @@ The output would be similar to the screenshot below.
 The output should be similar to below:
 ![CM Integration](images/part-2-image-3.png)
 
-1. Validate the data by running following command to retrieve a patient’s data. Patient ID was received from the extract info script. Click [here](#extract-key-patient-info) to extract patient info again.
+1. Validate the data by running following command to retrieve a patient’s data. Patient ID was received from the extract info script. Click [here](#extract-key-patient-info) if you need to extract patient info again.
 
     ```
     curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Patient/<<PATIENT_ID>> | jq

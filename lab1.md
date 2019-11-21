@@ -83,7 +83,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     . ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> aws-fhir-interface
     ```
 
-**The final output will have four output values generated from the deployment. The script has set them as environment variables which will be used in later steps.**. The following is a sample output screenshot.The first one represents the API_END_POINT, second is the IDToken(Used as the Authorization value for any curl request to the FHIR interface. It is a JWT token.), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. 
+**The final output will have four values generated from the deployment. The script has set them as environment variables which will be used in later steps.** The following is a sample output screenshot. The first one represents the API_END_POINT, second is the IDToken(used as the Authorization header for any curl request to the FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. 
 
 ![FHIR Server](images/part-1-image-5.png)
 
