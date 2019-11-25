@@ -117,8 +117,8 @@ We will now deploy the workshop code using a SAM(Serverless Access Model) templa
     --parameter-overrides CognitoSecretName=fhir-cm-secret-store \
     FHIRAPIEndpoint=$API_EDNPOINT ClientId=$CLIENT_ID
     ```
-
-1. Get DATA_INPUT_BUCKET by running the following command.  Save this value for use by later steps.
+## Get data input bucket
+1. Get DATA_INPUT_BUCKET by running the following command.  Save this value for use by later steps. This is the source bucket to upload HL7 and FHIR data files.
 
     ```
     aws cloudformation describe-stacks \
@@ -139,7 +139,7 @@ In this part of the lab, we will upload a HL7 file which has OBX segment contain
 
 1. Open the mdm.txt file under test-data directory. It is populated based on test data that was used as part of this lab. It represents the HL7 message for the same patient loaded in FHIR repository.
 
-1. Upload the file to s3 folder using the command below. It would trigger the flow to extract the data from OBX segments, run it through Comprehend Medical, extract the Condition resources and enrich data in FHIR repository.  Use the DATA_INPUT_BUCKET name retrieved from step 10.
+1. Upload the file to s3 folder using the command below. It would trigger the flow to extract the data from OBX segments, run it through Comprehend Medical, extract the Condition resources and enrich data in FHIR repository.  Use the DATA_INPUT_BUCKET name retrieved [here](#get-data-input-bucket).
 
     ```
     aws s3 cp mdm.txt s3://<<DATA_INPUT_BUCKET>>/input/hl7/mdm.txt
@@ -177,7 +177,7 @@ The above command should trigger the step functions. You can monitor the progres
 1. Run the following command to upload the file to trigger the workflow:
 
     ```
-    aws s3 cp test-data/FHIR-DocRef.json s3://<<DATA_INPUT_BUKCET>>/input/fhir/FHIR-DocRef.json
+    aws s3 cp test-data/FHIR-DocRef.json s3://<<DATA_INPUT_BUCKET>>/input/fhir/FHIR-DocRef.json
     ```
 
 1. Check the step functions console to monitor the progress of the work flow.
