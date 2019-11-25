@@ -158,7 +158,7 @@ Click on the step function that is deployed as part of the workshop. It would sh
 
     ```
 
-    **Note: In case your ID token is expired, run the below commands to reset the auth token.Run the above CURL command again after that.**
+    **Note: In case your ID token is expired, run the below commands to reset the token.**
 
     >```
     >NEW_ID_TOKEN="$(python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py $CLIENT_ID)" 
@@ -167,6 +167,7 @@ Click on the step function that is deployed as part of the workshop. It would sh
     >```
     >export ID_TOKEN="${NEW_ID_TOKEN}"
     >```
+    **Run the curl command again to get the conditions.**
 
     Look for the conditions again. It should show the additional conditions that were extracted from the hl7 message. This completes the second part of the lab.
 
