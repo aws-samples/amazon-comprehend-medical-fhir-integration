@@ -207,3 +207,4 @@ Once you have completed the workshop, go to the cloudformation console, select t
 
 You can delete the S3 buckets manually by going to the S3 console, selecting the bucket names and click on delete. It will ask you to confirm by entering the name of the bucket. Also, delete the cloud9 environment that was created to run the lab.
 
+Click [here](lab1.md) to go to previous lab.
