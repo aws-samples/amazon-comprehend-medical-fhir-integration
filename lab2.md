@@ -189,8 +189,7 @@ The FHIR message flow demonstrates the scenario where an existing FHIR resource 
     ```
 
 1. The above command should trigger the same step function from lab 1. You can monitor the progress of the step function by logging in to the console and going to the step functions service. You will see a listing of the step functions that are currently running or completed. 
-![SFN Listing](images/part-2-image-5.png)Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
-![CM Integration](images/part-2-image-4.png)
+![SFN Listing](images/part-2-image-5.png)Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.![CM Integration](images/part-2-image-4.png)
 
 1. Once the step functions is completed, run the following command to get the Conditions for the patient. It should now be updated with the new conditions that were loaded.
     ```
