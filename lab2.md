@@ -49,7 +49,7 @@ The output would be similar to the screenshot below.
     cd ~/environment/amazon-comprehend-medical-fhir-integration/resources/
     ```
 
-1. Run the following commands to set the executable permissions and then execute the script to load the master patient record in the FHIR repository.
+1. Run the following commands to set the executable permissions and then execute the script to load the master patient record in the FHIR repository. Please give it a few minutes for the data load to complete.
 
     ```
     chmod u+x post-test-data.sh
@@ -73,7 +73,7 @@ The output should be similar to below:
     ```
 
 
-**Make a note of the number of conditions for the patient. We will be adding additional conditions extracted from the clinical notes. In this lab we used a patient with two conditions.**
+**Make a note of the number of conditions for the patient. We will be adding additional conditions extracted from the clinical notes. In this lab we used a patient with two conditions. However, you can confirm it by looking at the "total" tag value in the json output.**
 
 ## Building  amazon-comprehend-medical-fhir-integration project 
 
@@ -108,7 +108,7 @@ We will now deploy the workshop code using a SAM(Serverless Access Model) templa
     --s3-bucket <<PACKAGE_BUCKET_NAME>>
     ```
 
-1. Replace the API_END_POINT and Cognito CLIENT_ID values(extracted in lab1) in the below command and then run it to deploy the SAM template.
+1. Run the following command to deploy the SAM template.
 
     ```
     aws cloudformation deploy --template-file /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/resources/serverless-output.yaml \
@@ -145,10 +145,12 @@ In this part of the lab, we will upload a HL7 file which has OBX segment contain
     aws s3 cp mdm.txt s3://<<DATA_INPUT_BUCKET>>/input/hl7/mdm.txt
     ```
 
+The above command should trigger the step function. You can monitor the progress of the step functions by logging in to the console and going to the step functions service. You will see a listing of the step functions that are currently running or completed. 
+![SFN Listing](images/part-2-image-5.png)
 
-The above command should trigger the step functions. You can monitor the progress of the step functions by login to the console and going to the step functions service. Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
+Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
 ![CM Integration](images/part-2-image-4.png)
-1. Run the below command again to lookup the conditions for the patient:
+1. Run the below command again to lookup the conditions for the patient. You will need to replace the patient id with the value captured in the previous step of extracting patient info.
 
     ```
     curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" \
@@ -156,15 +158,20 @@ The above command should trigger the step functions. You can monitor the progres
 
     ```
 
-    **Note: In case your ID token is expired, run the below command to get a new auth token by running the below.You can then use it in the curl request to get the Conditions.**
+    **Note: In case your ID token is expired, run the below commands to reset the auth token.Run the above CURL command again after that.**
 
-    ```
-    python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py $CLIENT_ID
-    ```
+    >```
+    >NEW_ID_TOKEN="$(python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py $CLIENT_ID)" 
+    >```
+
+    >```
+    >export ID_TOKEN="${NEW_ID_TOKEN}"
+    >```
 
     Look for the conditions again. It should show the additional conditions that were extracted from the hl7 message. This completes the second part of the lab.
 
 ## Optional - FHIR Message flow
+The FHIR message flow demonstrates the scenario where an existing FHIR resource like DocumentReference has clinical notes embedded in one of the tags. In this example, we have embedded notes in the data tag of the content element. The notes are sent as a base 64 encoded string. You can decode the data by pasting it [here](https://www.base64decode.org/).
 
 1. Run the following command to change directory to resources directory.
 
@@ -180,7 +187,12 @@ The above command should trigger the step functions. You can monitor the progres
     aws s3 cp test-data/FHIR-DocRef.json s3://<<DATA_INPUT_BUCKET>>/input/fhir/FHIR-DocRef.json
     ```
 
-1. Check the step functions console to monitor the progress of the work flow.
+1. The above command should trigger the same step function from lab 1. You can monitor the progress of the step function by logging in to the console and going to the step functions service. You will see a listing of the step functions that are currently running or completed. 
+![SFN Listing](images/part-2-image-5.png)
+
+    Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
+    ![CM Integration](images/part-2-image-4.png)
+
 1. Once the step functions is completed, run the following command to get the Conditions for the patient. It should now be updated with the new conditions that were loaded.
     ```
     curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" \

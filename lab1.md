@@ -77,7 +77,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     chmod u+x deploy-fhir-server.sh
     ```
 
-1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface.
+1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface. Make sure you just input bucket name. No need to include “s3://“ in front of the bucket name.
 
     ```
     . ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> aws-fhir-interface
