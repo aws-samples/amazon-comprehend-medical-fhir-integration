@@ -59,17 +59,18 @@ The output would be similar to the screenshot below.
 The output should be similar to below:
 ![CM Integration](images/part-2-image-3.png)
 
-1. Validate the data by running following command to retrieve a patient’s data. Patient ID was received from the extract info script. Click [here](#extract-key-patient-info) if you need to extract patient info again.
+1. Let us validate the data by running following command to retrieve a patient’s data. Replace the patient id with the value extracted in previous step. Click [here](#extract-key-patient-info) if you need to extract patient info again.
 
     ```
-    curl -H "Accept: application/fhir+json" -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Patient/<<PATIENT_ID>> | jq
+    curl -H "Accept: application/fhir+json" \
+         -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Patient/<<PATIENT_ID>> | jq
     ```
 
 1. Get the conditions for the patient by running the following command
 
     ```
     curl -H "Accept: application/fhir+json" \
-    -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Condition?patient-ref-id=<<PATIENT_ID>> | jq
+         -H "Authorization:$ID_TOKEN" "$API_EDNPOINT"Condition?patient-ref-id=<<PATIENT_ID>> | jq
     ```
 
 
@@ -104,27 +105,30 @@ We will now deploy the workshop code using a SAM(Serverless Access Model) templa
 
     ```
     aws cloudformation package --template-file FHIR-CM-Integration.yaml \
-    --output-template-file serverless-output.yaml \
-    --s3-bucket <<PACKAGE_BUCKET_NAME>>
+        --output-template-file serverless-output.yaml \
+        --s3-bucket $PACKAGE_BUCKET_NAME
     ```
+Feel free to explore the template by going to FHIR-CM-Integration.yaml file under the resources folder. It will have the resource defintions for the services that have been used as part of this project. The main services that orchestrates the flow are AWS Step functions, AWS Lambda functions and Amazon Comprehend Medical.
 
 1. Run the following command to deploy the SAM template.
 
     ```
-    aws cloudformation deploy --template-file /home/ec2-user/environment/amazon-comprehend-medical-fhir-integration/resources/serverless-output.yaml \
-    --stack-name fhir-cm-integ \
-    --capabilities CAPABILITY_IAM \
-    --parameter-overrides CognitoSecretName=fhir-cm-secret-store \
-    FHIRAPIEndpoint=$API_EDNPOINT ClientId=$CLIENT_ID
+    aws cloudformation deploy --template-file \
+        ~/environment/amazon-comprehend-medical-fhir-integration/resources/serverless-output.yaml \
+        --stack-name fhir-cm-integ \
+        --capabilities CAPABILITY_IAM \
+        --parameter-overrides CognitoSecretName=fhir-cm-secret-store \
+        FHIRAPIEndpoint=$API_EDNPOINT ClientId=$CLIENT_ID
     ```
 ## Get data input bucket
 1. Get DATA_INPUT_BUCKET by running the following command.  Save this value for use by later steps. This is the source bucket to upload HL7 and FHIR data files.
 
     ```
-    aws cloudformation describe-stacks \
+    DATA_INPUT_BUCKET="$(aws cloudformation describe-stacks \
         --stack-name fhir-cm-integ \
         --query 'Stacks[].Outputs[?OutputKey==`BucketName`][OutputValue]' \
-        --output text
+        --output text)"
+    export DATA_INPUT_BUCKET="${DATA_INPUT_BUCKET}"    
     ```
 
 ## HL7 Message Flow
@@ -139,13 +143,19 @@ In this part of the lab, we will upload a HL7 file which has OBX segment contain
 
 1. Open the mdm.txt file under test-data directory. It is populated based on test data that was used as part of this lab. It represents the HL7 message for the same patient loaded in FHIR repository.
 
-1. Upload the file to s3 folder using the command below. It would trigger the flow to extract the data from OBX segments, run it through Comprehend Medical, extract the Condition resources and enrich data in FHIR repository.  Use the DATA_INPUT_BUCKET name retrieved [here](#get-data-input-bucket).
+1. Upload the file to s3 folder using the command below. It would trigger the flow to extract the data from OBX segments, run it through Comprehend Medical, extract the Condition resources and enrich data in FHIR repository.
 
     ```
-    aws s3 cp mdm.txt s3://<<DATA_INPUT_BUCKET>>/input/hl7/mdm.txt
+    aws s3 cp mdm.txt s3://"$DATA_INPUT_BUCKET"/input/hl7/mdm.txt
     ```
 
-The above command should trigger the step function. You can monitor the progress of the step functions by logging in to the console and going to the step functions service. You will see a listing of the step functions that are currently running or completed. 
+The above command should trigger the step function. Click on AWS Cloud9 link and select Go To Your Dashboard. It will take you back to your environments.  
+![FHIR Server](images/part-1-image-15.png)
+
+You can search for services in that page.
+![FHIR Server](images/part-1-image-16.png)
+
+Search for step functions service on the search bar. You will see a listing of the step functions that are currently running or completed. 
 ![SFN Listing](images/part-2-image-5.png)
 
 Click on the step function that is deployed as part of the workshop. It would show the progress of the various steps.
@@ -185,7 +195,7 @@ The FHIR message flow demonstrates the scenario where an existing FHIR resource 
 1. Run the following command to upload the file to trigger the workflow:
 
     ```
-    aws s3 cp test-data/FHIR-DocRef.json s3://<<DATA_INPUT_BUCKET>>/input/fhir/FHIR-DocRef.json
+    aws s3 cp test-data/FHIR-DocRef.json s3://"$DATA_INPUT_BUCKET"/input/fhir/FHIR-DocRef.json
     ```
 
 The above command should trigger the same step function from lab 1. You can monitor the progress of the step function by logging in to the console and going to the step functions service. You will see a listing of the step functions that are currently running or completed. 

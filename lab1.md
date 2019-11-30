@@ -49,7 +49,9 @@ We will create the S3 bucket in this step which will be used later as part of th
 1. Run the following command on terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<user initials>> for the bucket otherwise the command will throw an error.
 
     ```
-    aws s3 mb s3://<<PACKAGE_BUCKET_NAME>>
+    export PACKAGE_BUCKET_NAME=<<PACKAGE_BUCKET_NAME>>
+    
+    aws s3 mb s3://${PACKAGE_BUCKET_NAME}
     ```
 
     **Keep a note of this bucket name as it will be used in the later steps.**
@@ -77,10 +79,10 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     chmod u+x deploy-fhir-server.sh
     ```
 
-1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface. Make sure you just input bucket name. No need to include “s3://“ in front of the bucket name.
+1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface. 
 
     ```
-    . ./deploy-fhir-server.sh <<PACKAGE_BUCKET_NAME>> aws-fhir-interface
+    . ./deploy-fhir-server.sh $PACKAGE_BUCKET_NAME aws-fhir-interface
     ```
 
 **The final output will have four values generated from the deployment. The script has set them as environment variables which will be used in later steps.** The following is a sample output screenshot. The first one represents the API_END_POINT, second is the IDToken(used as the Authorization header for any curl request to the FHIR interface), third is the cognito USER_POOL_ID and fourth is cognito app CLIENT_ID. 
@@ -88,6 +90,11 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
 ![FHIR Server](images/part-1-image-5.png)
 
 We have now created a serverless FHIR interface. 
+
+Click on AWS Cloud9 link and select Go To Your Dashboard. It will take you back to your environments.  
+![FHIR Server](images/part-1-image-15.png)
+You can search for services in that page.
+![FHIR Server](images/part-1-image-16.png)
 
 You can navigate through the API gateway, Lambda and DynamoDB web consoles to review the various resources. API Gateway will provide you the API definitions for the various resources(like Patient, Observation and Condition) as well as the backend integration with lambda. It also has the authorization defined with Amazon Cognito. The API definitions can also be exported from API gateway if you need to share it with developers. DynamoDB has the tables which store the JSON payloads and it will show you the index definitions that are used for searching the resources. 
 
