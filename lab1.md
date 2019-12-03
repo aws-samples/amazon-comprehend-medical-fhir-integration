@@ -46,7 +46,7 @@ The script would upgrade the jdk to 1.8. By default, cloud9 comes with jdk 1.7. 
 We will create the S3 bucket in this step which will be used later as part of the cloudformation package command. The lambda jar file created in the next step in uploaded to this S3 bucket.
 
 
-1. Run the following command on terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<user initials>> for the bucket otherwise the command will throw an error.
+1. Run the following command on terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<user initials>> for the bucket otherwise the command will throw an error. Bucket name requirements can be found **[here](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).**
 
     ```
     export PACKAGE_BUCKET_NAME=<<PACKAGE_BUCKET_NAME>>
