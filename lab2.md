@@ -168,7 +168,7 @@ Click on the step function that is deployed as part of the workshop. It would sh
 
     ```
 
-    **Note: In case your ID token is expired, run the below commands to reset the token.**
+    **Note: Run the below two commands ONLY if you get an expired token error. It will reset the auth token and you can try the curl request again after that.**
 
     >```
     >NEW_ID_TOKEN="$(python ~/environment/amazon-comprehend-medical-fhir-integration/resources/init-auth.py $CLIENT_ID)" 
@@ -177,9 +177,9 @@ Click on the step function that is deployed as part of the workshop. It would sh
     >```
     >export ID_TOKEN="${NEW_ID_TOKEN}"
     >```
-    **Run the curl command again to get the conditions.**
 
-    Look for the conditions again. It should show the additional conditions that were extracted from the hl7 message. This completes the second part of the lab.
+
+    Look for the conditions again. It should show the additional conditions that were extracted from the hl7 message. It will now have 5 conditions loaded for the patiet. This completes the second part of the lab.
 
 ## Optional - FHIR Message flow
 The FHIR message flow demonstrates the scenario where an existing FHIR resource like DocumentReference has clinical notes embedded in one of the tags. In this example, we have embedded notes in the data tag of the content element. The notes are sent as a base 64 encoded string. You can decode the data by pasting it [here](https://www.base64decode.org/).
