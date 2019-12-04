@@ -63,7 +63,7 @@ public class FHIRResourceBuilder {
 
 	static final Logger log = LogManager.getLogger(FHIRResourceBuilder.class);
 	/** The base url. */
-	private final String baseUrl = "https://browser.ihtsdotools.org/snowstorm/snomed-ct/v2/browser/MAIN";
+	private final String baseUrl = "https://browser.ihtsdotools.org/snowstorm/snomed-ct/browser/MAIN";
 
 	/** The edition. */
 	private final String edition = "en-edition";
