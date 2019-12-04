@@ -32,7 +32,7 @@ We will now load a patient record to an existing FHIR repository. The test file 
 1. Run the following command to extract the required info for the workshop.
     ```
     python ~/environment/amazon-comprehend-medical-fhir-integration/resources/extract-patient-info.py \
-        ~/environment/amazon-comprehend-medical-fhir-integration/test-data/master-patient-data/patient-bundle.json
+    ~/environment/amazon-comprehend-medical-fhir-integration/test-data/master-patient-data/patient-bundle.json
     ```
 
 The output would be similar to the screenshot below. 
@@ -40,8 +40,8 @@ The output would be similar to the screenshot below.
 
 ![CM Integration](images/part-2-image-2.png)
 
-
-**Copy the output to a notepad or editor of your choice to use in later step.**
+The goal of this step is to show you some of the key elements of the patient record that will be loaded into the FHIR repository.
+**Copy the output to a notepad or editor of your choice to validate in later steps. The patient id will be used in later steps to retrieve the patient record.**
 
 1. Change the terminal directory by running following command:
 
@@ -121,7 +121,7 @@ Feel free to explore the template by going to FHIR-CM-Integration.yaml file unde
         FHIRAPIEndpoint=$API_EDNPOINT ClientId=$CLIENT_ID
     ```
 ## Get data input bucket
-1. Get DATA_INPUT_BUCKET by running the following command.  Save this value for use by later steps. This is the source bucket to upload HL7 and FHIR data files.
+1. Get DATA_INPUT_BUCKET by running the following command. Save this value for use in later steps. This is the source bucket to upload HL7 and FHIR data files.
 
     ```
     DATA_INPUT_BUCKET="$(aws cloudformation describe-stacks \
@@ -224,5 +224,7 @@ aws cloudformation delete-stack \
 ```
 
 You can delete the S3 buckets manually by going to the S3 console, selecting the bucket names and click on delete. It will ask you to confirm by entering the name of the bucket. Also, delete the cloud9 environment that was created to run the lab.
+
+Congratulations! You have now completed the full lab.
 
 Click [here](lab1.md) to go to previous lab.

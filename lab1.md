@@ -54,7 +54,7 @@ We will create the S3 bucket in this step which will be used later as part of th
     aws s3 mb s3://${PACKAGE_BUCKET_NAME}
     ```
 
-    **Keep a note of this bucket name as it will be used in the later steps.**
+    **Keep a note of this bucket name in case you need to reset the environment variable.**
 
 1. Go back to FHIRServer directory by running `cd ..`
 1. Build the source code by running `mvn clean install`
