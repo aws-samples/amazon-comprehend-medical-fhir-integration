@@ -39,14 +39,14 @@ The workshop is divided into two parts. The first part of the workshop focuses o
     . ./setupEnv.sh
     ```
 
-The script would upgrade the jdk to 1.8. By default, cloud9 comes with jdk 1.7. It will also set the default jdk as 1.8. It will also install maven packages required for building the code. A package to beautify json output is also installed.
+The script would upgrade the jdk to 1.8. By default, cloud9 comes with jdk 1.7. It will also set the default jdk as 1.8. It will also install maven which is required for building the code. A package called jq to beautify json output is also installed.
 
 ## S3 Bucket to upload Lambda jar file
 
 We will create the S3 bucket in this step which will be used later as part of the cloudformation package command. The lambda jar file created in the next step in uploaded to this S3 bucket.
 
 
-1. Run the following command on terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<user initials>> for the bucket otherwise the command will throw an error. Bucket name requirements can be found **[here](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).**
+1. Run the following command in Cloud9 terminal to create a S3 bucket. You will need to pick a ***unique name*** like fhir-code-bucket-<<<user initials>> for the bucket otherwise the command will throw an error. S3 bucket name requirements can be found **[here](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).**
 
     ```
     export PACKAGE_BUCKET_NAME=<<PACKAGE_BUCKET_NAME>>
@@ -79,7 +79,7 @@ Go to the resources folder and check the file FHIRService-dev-swagger-apigateway
     chmod u+x deploy-fhir-server.sh
     ```
 
-1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes SAM commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Provide the bucket name that you created earlier. The name of the stack will be aws-fhir-interface. 
+1. Run the following command to deploy the FHIR server and provision user in Cognito pool. The script includes commands to package the SAM template and then the deploy command which is used by cloudformation service to deploy the resources. It also includes a call to a python script to provision a user in cognito user pool and get a JWT auth token for that user.  Open the file in an editor to explore all the commands in detail. Run the below command in terminal to package and deploy the resources. The name of the stack will be aws-fhir-interface. 
 
     ```
     . ./deploy-fhir-server.sh $PACKAGE_BUCKET_NAME aws-fhir-interface
